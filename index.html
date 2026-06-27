@@ -36,30 +36,56 @@
 
         /* HEADER */
         header { background: var(--white); border-bottom: 1px solid var(--border); box-shadow: 0 2px 10px rgba(0,0,0,.06); }
-        .header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .header-inner { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 12px 16px; 
+            display: flex; 
+            align-items: center; 
+            gap: 16px; 
+            flex-wrap: wrap;
+        }
         .school-logo { 
-    width: 75px; 
-    height: 75px; 
-    border-radius: 50%; 
-    overflow: hidden; 
-    border: 2px solid var(--gold); 
-    background: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-.school-logo img { 
-    width: 100%; 
-    height: 100%; 
-    /* লোগোটি গোল ফ্রেমের ভেতরে যেন কেটে না যায় এবং সুন্দরভাবে ফিট হয় */
-    object-fit: contain; 
-    padding: 4px; 
-}
-        .school-name h1 { font-size: 26px; color: var(--green); font-weight: 700; line-height: 1.2; }
-        .school-name p { font-size: 13px; color: var(--muted); margin-top: 2px; }
-        .header-contacts { margin-left: auto; text-align: right; font-size: 13px; color: var(--muted); line-height: 1.8; }
+            width: 70px; 
+            height: 70px; 
+            border-radius: 50%; 
+            overflow: hidden; 
+            border: 2px solid var(--gold); 
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .school-logo img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            padding: 4px; 
+        }
+        .school-name { 
+            flex: 1;
+            min-width: 150px;
+        }
+        .school-name h1 { 
+            font-size: 24px; 
+            color: var(--green); 
+            font-weight: 700; 
+            line-height: 1.1; 
+            margin-bottom: 3px;
+        }
+        .school-name p { 
+            font-size: 11px; 
+            color: var(--muted); 
+            line-height: 1.3;
+        }
+        .header-contacts { 
+            text-align: right; 
+            font-size: 12px; 
+            color: var(--muted); 
+            line-height: 1.6;
+        }
         .header-contacts strong { color: var(--green); }
 
         /* NAVIGATION */
@@ -80,41 +106,35 @@
 
         /* HERO BANNER WITH BACKGROUND IMAGE AND OVERLAY */
         .hero { 
-    position: relative; 
-    
-    /* ১. শেড পরিবর্তন: ভারী সবুজ রঙ বাদ দিয়ে শুধু বাম পাশে হালকা কালো শেড দেওয়া হয়েছে */
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%), 
-                url('school_hero_bg.webp') no-repeat center center; 
-    
-    /* ২. ফিটিং পরিবর্তন: ব্যানারের একটি স্ট্যান্ডার্ড উচ্চতা নির্ধারণ করা হয়েছে */
-    background-size: cover; /* ছবিটিকে পুরো ব্যানার জুড়ে ল্যান্ডস্কেপ মোডে সেট রাখবে */
-    min-height: 480px;      /* আপনার ছবির উচ্চতা অনুযায়ী এটি ৪০০px থেকে ৫০০px পর্যন্ত বাড়িয়ে-কমানো যাবে */
-    
-    display: flex; 
-    align-items: center; 
-    overflow: hidden; 
-}
+            position: relative; 
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%), 
+                        url('school_hero_bg.webp') no-repeat center center; 
+            background-size: cover;
+            min-height: 480px;
+            display: flex; 
+            align-items: center; 
+            overflow: hidden; 
+        }
 
-/* টেক্সটের নিচে হালকা শ্যাডো যাতে শেড ছাড়াও লেখা ১‌০০% পরিষ্কার পড়া যায় */
-.hero-text h2 { 
-    font-size: 42px; 
-    color: #fff; 
-    line-height: 1.2; 
-    margin-bottom: 16px; 
-    font-weight: 700; 
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.6); 
-}
-.hero-text p { 
-    color: #edf7f1; 
-    font-size: 16px; 
-    line-height: 1.7; 
-    margin-bottom: 28px; 
-    max-width: 550px; 
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.6); 
-}
+        .hero-text h2 { 
+            font-size: 42px; 
+            color: #fff; 
+            line-height: 1.2; 
+            margin-bottom: 16px; 
+            font-weight: 700; 
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6); 
+        }
+        .hero-text p { 
+            color: #edf7f1; 
+            font-size: 16px; 
+            line-height: 1.7; 
+            margin-bottom: 28px; 
+            max-width: 550px; 
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6); 
+        }
         
         .hero-pattern { position: absolute; inset: 0; opacity: .04; background-image: repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%); background-size: 20px 20px; }
-        .hero-content { max-width: 1200px; margin: 0 auto; padding: 65px 24px; display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: center; width: 100%; position: relative; z-index: 10; }
+        .hero-content { max-width: 1200px; margin: 0 auto; padding: 65px 24px; display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: center; width: 100%; position: relative; z-index: 1; }
         .hero-text h2 { font-size: 42px; color: #fff; line-height: 1.2; margin-bottom: 16px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
         .hero-text h2 span { color: #f5c842; }
         .hero-text p { color: #e2f3e8; font-size: 16px; line-height: 1.7; margin-bottom: 28px; max-width: 550px; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
@@ -144,14 +164,14 @@
         .biography-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
         .bio-card { background: #fafbfc; border: 1px solid var(--border); border-radius: 6px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; }
         .bio-img { 
-    width: 120px;            /* প্রস্থ ৮৫px থেকে বাড়িয়ে ১২০px করা হলো */
-    height: 145px;           /* উচ্চতা ১০৫px থেকে বাড়িয়ে ১৪৫px করা হলো */
-    object-fit: cover; 
-    border-radius: 10px; 
-    background: #eee; 
-    border: 1px solid #cbd5e1; 
-    flex-shrink: 0;          /* ছবি যেন কোনোভাবেই চ্যাপ্টা বা ছোট হয়ে না যায় */
-}
+            width: 120px;
+            height: 145px;
+            object-fit: cover; 
+            border-radius: 10px; 
+            background: #eee; 
+            border: 1px solid #cbd5e1; 
+            flex-shrink: 0;
+        }
         .bio-info h3 { font-size: 16px; color: var(--text); font-weight: 700; margin-bottom: 2px; }
         .bio-info .role { font-size: 12.5px; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
         .bio-info p { font-size: 13.5px; color: var(--muted); text-align: justify; line-height: 1.6; }
@@ -228,7 +248,7 @@
         .footer-col h4 { font-size: 14px; color: #c5e8d0; margin-bottom: 14px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; }
         .footer-col a { display: block; font-size: 13.5px; color: #7aab8a; padding: 5px 0; transition: color .2s; }
         .footer-col a:hover { color: #fff; text-decoration: underline; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 20px 24px; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: #7aab8a; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 20px 24px; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #7aab8a; flex-wrap: wrap; }
 
         /* RESPONSIVE */
         @media(max-width:900px){
@@ -238,561 +258,557 @@
             .footer-inner { grid-template-columns: 1fr; gap: 25px; }
             .biography-grid { grid-template-columns: 1fr; }
         }
-        @media(max-width:600px){
+        @media(max-width:768px){
+            .header-inner { 
+                padding: 10px 12px;
+                gap: 12px;
+            }
+            .school-logo { 
+                width: 60px; 
+                height: 60px; 
+            }
+            .school-name h1 { 
+                font-size: 18px;
+            }
+            .school-name p { 
+                font-size: 10px;
+            }
+            .header-contacts {
+                font-size: 11px;
+                line-height: 1.4;
+                text-align: left;
+                margin-left: auto;
+            }
             .hero-text h2 { font-size: 28px; }
             .nav-inner a { padding: 10px 12px; font-size: 13.5px; }
             .quick-grid { grid-template-columns: repeat(3,1fr); }
             .hero-stats { grid-template-columns: 1fr 1fr; }
         }
+        @media(max-width:600px){
+            .header-inner { 
+                padding: 10px;
+                gap: 10px;
+            }
+            .school-logo { 
+                width: 55px; 
+                height: 55px; 
+                border-width: 2px;
+            }
+            .school-name {
+                flex: 1;
+            }
+            .school-name h1 { 
+                font-size: 16px;
+                margin-bottom: 2px;
+            }
+            .school-name p { 
+                font-size: 9px;
+            }
+            .header-contacts {
+                display: none;
+            }
+            .hero-text h2 { font-size: 24px; }
+            .nav-inner a { 
+                padding: 10px 10px; 
+                font-size: 12px; 
+            }
+            .quick-grid { grid-template-columns: repeat(3,1fr); }
+            .hero-stats { grid-template-columns: 1fr 1fr; }
+            .main-wrapper { 
+                padding: 20px 12px; 
+            }
+        }
+        
         .teacher-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* মোবাইলে ১টি করে কার্ড দেখাবে */
-    gap: 16px;
-    margin-top: 15px;
-}
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 15px;
+        }
 
-@media(min-width: 768px) {
-    .teacher-grid {
-        grid-template-columns: 1fr 1fr; /* কম্পিউটার বা ট্যাবে ২টি করে কলাম হবে */
-    }
-}
+        @media(min-width: 768px) {
+            .teacher-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
-.teacher-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-}
+        .teacher-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
 
-/* গোল্ডেন বর্ডারসহ গোল প্রোফাইল পিকচার */
-.t-avatar-wrapper {
-    width: 85px;
-    height: 85px;
-    border-radius: 50%;
-    border: 2px solid var(--gold); 
-    padding: 3px;
-    background: #fff;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
+        .t-avatar-wrapper {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            border: 2px solid var(--gold); 
+            padding: 3px;
+            background: #fff;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
-.t-avatar-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
+        .t-avatar-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
 
-.t-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
+        .t-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
 
-.t-name {
-    font-size: 17px;
-    color: var(--green); /* আপনার ভ্যারিয়েবলের গাঢ় সবুজ রঙ */
-    font-weight: 700;
-}
+        .t-name {
+            font-size: 17px;
+            color: var(--green);
+            font-weight: 700;
+        }
 
-.t-role {
-    font-size: 13.5px;
-    color: var(--gold); /* আপনার ভ্যারিয়েবলের সোনালী রঙ */
-    font-weight: 600;
-    margin-bottom: 4px;
-}
+        .t-role {
+            font-size: 13.5px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
 
-.t-contact {
-    font-size: 13px;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-/* শিক্ষার্থী পরিসংখ্যান সেকশন ডিজাইন */
-#page-students {
-    background: #fafafa;
-    padding: 30px 15px;
-}
+        .t-contact {
+            font-size: 13px;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        #page-students {
+            background: #fafafa;
+            padding: 30px 15px;
+        }
 
-/* শীর্ষ ড্যাশবোর্ড কাউন্টার বক্স */
-.main-counters-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* মোবাইলে পাশাপাশি ২টি */
-    gap: 12px;
-    margin-bottom: 25px;
-}
-@media(min-width: 768px) {
-    .main-counters-grid {
-        grid-template-columns: repeat(4, 1fr); /* কম্পিউটার বা ট্যাবে ৪টি পাশাপাশি */
-    }
-}
-.counter-card {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 16px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    border-bottom: 3px solid var(--green);
-}
-.counter-card.gold-accent {
-    border-bottom-color: var(--gold);
-}
-.counter-card h4 {
-    font-size: 13px;
-    color: var(--muted);
-    margin: 0 0 6px 0;
-    font-weight: 600;
-}
-.counter-card .num {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--text);
-}
+        .main-counters-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        @media(min-width: 768px) {
+            .main-counters-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .counter-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border-bottom: 3px solid var(--green);
+        }
+        .counter-card.gold-accent {
+            border-bottom-color: var(--gold);
+        }
+        .counter-card h4 {
+            font-size: 13px;
+            color: var(--muted);
+            margin: 0 0 6px 0;
+            font-weight: 600;
+        }
+        .counter-card .num {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text);
+        }
 
-/* শ্রেণীভিত্তিক কার্ড গ্রিড */
-.student-card-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* মোবাইলে ১টি কলাম */
-    gap: 20px;
-}
-@media(min-width: 768px) {
-    .student-card-grid {
-        grid-template-columns: 1fr 1fr; /* ট্যাবে ২টি কলাম */
-    }
-}
-@media(min-width: 1024px) {
-    .student-card-grid {
-        grid-template-columns: repeat(3, 1fr); /* কম্পিউটারে ৩টি কলাম */
-    }
-}
+        .student-card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        @media(min-width: 768px) {
+            .student-card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media(min-width: 1024px) {
+            .student-card-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
 
-.student-data-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-    display: flex;
-    flex-direction: column;
-}
+        .student-data-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+        }
 
-.student-card-header {
-    background: var(--green);
-    color: #ffffff;
-    padding: 14px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.student-card-header h3 {
-    font-size: 17px;
-    margin: 0;
-    font-weight: 700;
-}
-.total-badge {
-    background: var(--gold);
-    color: #000000;
-    padding: 3px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 700;
-}
+        .student-card-header {
+            background: var(--green);
+            color: #ffffff;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .student-card-header h3 {
+            font-size: 17px;
+            margin: 0;
+            font-weight: 700;
+        }
+        .total-badge {
+            background: var(--gold);
+            color: #000000;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+        }
 
-.student-card-body {
-    padding: 16px;
-    font-size: 14px;
-}
+        .student-card-body {
+            padding: 16px;
+            font-size: 14px;
+        }
 
-/* গ্রুপ/বিভাগ পিল স্টাইল (৯ম ও ১০ম শ্রেণীর জন্য) */
-.group-container {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-    background: #f8fafc;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #edf2f7;
-}
-.group-pill {
-    font-size: 12px;
-    font-weight: bold;
-    color: #4a5568;
-}
+        .group-container {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #edf2f7;
+        }
+        .group-pill {
+            font-size: 12px;
+            font-weight: bold;
+            color: #4a5568;
+        }
 
-/* ডাটা রো ডিজাইন */
-.data-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px dashed #edf2f7;
-}
-.data-row:last-child {
-    border-bottom: none;
-}
-.data-title {
-    font-weight: 600;
-    color: var(--text);
-}
-.data-val {
-    color: #4a5568;
-    text-align: right;
-}
-.sub-detail {
-    font-size: 12px;
-    color: var(--muted);
-}
-/* ==========================================
-   বিদ্যালয় প্রধানগণের টেবিল ও কৃতি শিক্ষার্থী স্টাইল 
-   ========================================== */
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #edf2f7;
+        }
+        .data-row:last-child {
+            border-bottom: none;
+        }
+        .data-title {
+            font-weight: 600;
+            color: var(--text);
+        }
+        .data-val {
+            color: #4a5568;
+            text-align: right;
+        }
+        .sub-detail {
+            font-size: 12px;
+            color: var(--muted);
+        }
 
-/* টেবিল ডিজাইন 
-.heads-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    font-size: 14px;
-}
-.heads-table th, .heads-table td {
-    border: 1px solid var(--border);
-    padding: 12px 14px;
-    text-align: center; 
-    vertical-align: middle;
-}
-.heads-table th {
-    background-color: var(--green);
-    color: var(--white);
-    font-weight: 600;
-}
-.heads-table tbody tr:nth-child(even) {
-    background-color: #fafdfa;
-}
-.heads-table tbody tr:hover {
-    background-color: var(--green-light);
-    transition: background 0.2s ease;
-}
-*/
-/* কৃতি শিক্ষার্থী গ্রিড ও কার্ড ডিজাইন */
-.achievers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 15px;
-}
-.achiever-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-    text-align: center;
-    transition: transform 0.2s;
-}
-.achiever-card:hover {
-    transform: translateY(-3px);
-}
-.achiever-img-box {
-    width: 100%;
-    height: 220px;
-    background: #eee;
-}
-.achiever-img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.achiever-details {
-    padding: 12px;
-}
-.achiever-details h3 {
-    font-size: 15px;
-    color: var(--text);
-    margin-bottom: 8px;
-    font-weight: 700;
-}
-.achiever-badge {
-    display: inline-block;
-    padding: 3px 10px;
-    font-size: 12px;
-    border-radius: 20px;
-    font-weight: 600;
-}
-.achiever-badge.ssc {
-    background-color: var(--green-light);
-    color: var(--green);
-}
-.achiever-badge.scholarship {
-    background-color: var(--gold-light);
-    color: var(--gold);
-}
-/* কৃতি শিক্ষার্থী কার্ড ও ছবি সুবিন্যস্ত ও ছোট করার কাস্টম কোড */
-.achievers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important; /* ২০০px থেকে কমিয়ে ১৫০px করা হলো */
-    gap: 12px !important;
-    margin-top: 15px;
-}
-.achiever-card {
-    padding: 10px !important;
-    border-radius: 8px !important;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03) !important;
-}
-.achiever-img-box {
-    width: 75px !important;  /* ছবির ডায়ামিটার ৭৫px এ ফিক্সড করা হলো */
-    height: 75px !important;
-    margin: 0 auto 8px !important;
-    border: 2px solid var(--gold) !important;
-}
-.achiever-details h3 {
-    font-size: 13.5px !important; /* নাম একটু ছোট করা হলো */
-    margin-bottom: 3px !important;
-}
-.achiever-badge {
-    font-size: 10.5px !important; /* ব্যাজ ফন্ট সাইজ অ্যাডজাস্টমেন্ট */
-    padding: 2px 6px !important;
-}
-/* শিক্ষার্থী পোর্টাল স্টাইল */
-.student-portal-section {
-    background: #ffffff;
-    padding: 30px 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin: 25px auto;
-    max-width: 1100px;
-}
-.portal-controls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 25px;
-    border-bottom: 2px solid #f0f4f1;
-    padding-bottom: 20px;
-}
-.class-filter-tabs {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-.st-tab {
-    background: #f3f7f4;
-    border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    transition: all 0.3s ease;
-}
-.st-tab.active, .st-tab:hover {
-    background: var(--green);
-    color: white;
-    border-color: var(--green);
-}
-.portal-search {
-    flex-grow: 1;
-    max-width: 350px;
-}
-.portal-search input {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid var(--border);
-    border-radius: 25px;
-    font-family: inherit;
-    outline: none;
-    font-size: 14px;
-}
-.portal-search input:focus {
-    border-color: var(--green-mid);
-    box-shadow: 0 0 5px rgba(39, 135, 79, 0.2);
-}
+        .achievers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+            gap: 12px !important;
+            margin-top: 15px;
+        }
+        .achiever-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px !important;
+            padding: 10px !important;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03) !important;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .achiever-card:hover {
+            transform: translateY(-3px);
+        }
+        .achiever-img-box {
+            width: 75px !important;
+            height: 75px !important;
+            margin: 0 auto 8px !important;
+            border: 2px solid var(--gold) !important;
+            border-radius: 50%;
+            background: #eee;
+            overflow: hidden;
+        }
+        .achiever-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .achiever-details {
+            padding: 8px 0;
+        }
+        .achiever-details h3 {
+            font-size: 13.5px !important;
+            color: var(--text);
+            margin-bottom: 3px !important;
+            font-weight: 700;
+        }
+        .achiever-badge {
+            display: inline-block;
+            padding: 2px 6px !important;
+            font-size: 10.5px !important;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .achiever-badge.ssc {
+            background-color: var(--green-light);
+            color: var(--green);
+        }
+        .achiever-badge.scholarship {
+            background-color: var(--gold-light);
+            color: var(--gold);
+        }
 
-/* স্টুডেন্ট কার্ড গ্রিড */
-.student-profile-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-}
-.st-profile-card {
-    background: #fafdfb;
-    border: 1px solid #e2ece6;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.st-profile-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    border-color: var(--green-mid);
-}
-.st-avatar {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: #eaf5ee;
-    margin: 0 auto 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    border: 2px solid #c2ded0;
-}
-.st-name {
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--text);
-    margin-bottom: 5px;
-}
-.st-meta {
-    font-size: 12.5px;
-    color: var(--muted);
-}
-.st-tag-badge {
-    display: inline-block;
-    background: var(--gold-light);
-    color: var(--gold);
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 11px;
-    margin-top: 8px;
-    font-weight: 600;
-}
+        .student-portal-section {
+            background: #ffffff;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin: 25px auto;
+            max-width: 1100px;
+        }
+        .portal-controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f4f1;
+            padding-bottom: 20px;
+        }
+        .class-filter-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .st-tab {
+            background: #f3f7f4;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+        .st-tab.active, .st-tab:hover {
+            background: var(--green);
+            color: white;
+            border-color: var(--green);
+        }
+        .portal-search {
+            flex-grow: 1;
+            max-width: 350px;
+        }
+        .portal-search input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            font-family: inherit;
+            outline: none;
+            font-size: 14px;
+        }
+        .portal-search input:focus {
+            border-color: var(--green-mid);
+            box-shadow: 0 0 5px rgba(39, 135, 79, 0.2);
+        }
 
-/* পপআপ মডাল স্টাইল */
-.student-modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
-    align-items: center;
-    justify-content: center;
-}
-.modal-content {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-    animation: zoomIn 0.3s ease;
-}
-@keyframes zoomIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-.close-modal {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #999;
-}
-.close-modal:hover { color: #333; }
-/* নোটিশ কার্ড ও বাটন ডিজাইন */
-.notice-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-}
-.notice-badge {
-    padding: 3px 10px;
-    border-radius: 4px;
-    font-size: 11.5px;
-    font-weight: bold;
-    color: white;
-}
-.badge-exam { background-color: #2563eb; }      /* ব্লু */
-.badge-holiday { background-color: #ef4444; }   /* লাল */
-.badge-admission { background-color: #16a34a; } /* সবুজ */
-.badge-general { background-color: #4b5563; }   /* গ্রে */
+        .student-profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .st-profile-card {
+            background: #fafdfb;
+            border: 1px solid #e2ece6;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .st-profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-color: var(--green-mid);
+        }
+        .st-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #eaf5ee;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            border: 2px solid #c2ded0;
+        }
+        .st-name {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+        .st-meta {
+            font-size: 12.5px;
+            color: var(--muted);
+        }
+        .st-tag-badge {
+            display: inline-block;
+            background: var(--gold-light);
+            color: var(--gold);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-top: 8px;
+            font-weight: 600;
+        }
 
-.notice-date {
-    font-size: 12.5px;
-    color: var(--muted);
-}
-.notice-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 12px;
-}
-.btn-notice-view, .btn-notice-print {
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    border: 1px solid transparent;
-}
-.btn-notice-view {
-    background-color: var(--green-light);
-    color: var(--green);
-}
-.btn-notice-view:hover {
-    background-color: var(--green);
-    color: white;
-}
-.btn-notice-print {
-    background-color: #f3f4f6;
-    color: #4b5563;
-    border-color: #e5e7eb;
-}
-.btn-notice-print:hover {
-    background-color: #e5e7eb;
-}
+        .student-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            animation: zoomIn 0.3s ease;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .close-modal {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+        .close-modal:hover { color: #333; }
+        
+        .notice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .notice-badge {
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11.5px;
+            font-weight: bold;
+            color: white;
+        }
+        .badge-exam { background-color: #2563eb; }
+        .badge-holiday { background-color: #ef4444; }
+        .badge-admission { background-color: #16a34a; }
+        .badge-general { background-color: #4b5563; }
 
-/* নোটিশ মডাল পপ-আপ সিএসএস */
-.notice-modal {
-    display: none;
-    position: fixed;
-    z-index: 3000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
-    align-items: center; justify-content: center;
-}
-.n-modal-content {
-    background-color: white;
-    padding: 25px;
-    border-radius: 12px;
-    width: 90%; max-width: 550px;
-    position: relative;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    animation: nModalOpen 0.25s ease-out;
-}
-@keyframes nModalOpen {
-    from { transform: scale(0.95); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-.n-close-btn {
-    position: absolute; right: 15px; top: 10px;
-    font-size: 26px; cursor: pointer; color: #999;
-}
-.n-close-btn:hover { color: #333; }
-.n-modal-meta {
-    display: flex; gap: 15px; align-items: center; margin-bottom: 12px;
-}
+        .notice-date {
+            font-size: 12.5px;
+            color: var(--muted);
+        }
+        .notice-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .btn-notice-view, .btn-notice-print {
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .btn-notice-view {
+            background-color: var(--green-light);
+            color: var(--green);
+        }
+        .btn-notice-view:hover {
+            background-color: var(--green);
+            color: white;
+        }
+        .btn-notice-print {
+            background-color: #f3f4f6;
+            color: #4b5563;
+            border-color: #e5e7eb;
+        }
+        .btn-notice-print:hover {
+            background-color: #e5e7eb;
+        }
+
+        .notice-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            align-items: center; justify-content: center;
+        }
+        .n-modal-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            width: 90%; max-width: 550px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: nModalOpen 0.25s ease-out;
+        }
+        @keyframes nModalOpen {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .n-close-btn {
+            position: absolute; right: 15px; top: 10px;
+            font-size: 26px; cursor: pointer; color: #999;
+        }
+        .n-close-btn:hover { color: #333; }
+        .n-modal-meta {
+            display: flex; gap: 15px; align-items: center; margin-bottom: 12px;
+        }
     </style>
 </head>
 <body>
@@ -822,10 +838,9 @@
             <p>স্থাপিত: ১৯৯৬ খ্রি. · ডাকঘর: খাগাইল বাজার-৩১০০, কোম্পানীগঞ্জ, সিলেট।</p>
         </div>
         <div class="header-contacts">
-            <div><strong>EIIN:</strong> ১৩০২৩১</div>
-            <div><strong>স্থাপিত:</strong> ১৯৯৬ খ্রি.</div>
+            <div><strong>EIIN:</strong> ১৩०२३१</div>
+            <div><strong>স্থাপিত:</strong> ১৯९६ খ্রি.</div>
             <div><strong>হেল্পলাইন:</strong> 01309-130231</div>
-          
         </div>
     </div>
 </header>
@@ -839,17 +854,16 @@
         <a onclick="switchPage('academic')" id="tab-academic">একাডেমিক রুটিন</a>
         <a onclick="switchPage('notices')" id="tab-notices">নোটিশ বোর্ড</a>
         <a onclick="switchPage('gallery')" id="tab-gallery">ফটো গ্যালারি</a>
-    
     </div>
 </nav>
 
-<!-- NOTICE TICKER (ভারসাম্যপূর্ণ এবং রুটিন বাদে অন্যান্য তথ্যযুক্ত) -->
+<!-- NOTICE TICKER -->
 <div class="ticker">
     <div class="ticker-inner">
         <span class="ticker-label">📢 সর্বশেষ</span>
         <div class="ticker-text">
             <span class="ticker-scroll">
-                ২০२६ শিক্ষাবর্ষের সকল শ্রেনির অর্ধ-বার্ষিক পরীক্ষার রুটিন বিদ্যালয়ের নোটিশ বোর্ডে দেখুন।
+                ২०२६ শিক্ষাবর্ষের সকল শ্রেনির অর্ধ-বার্ষিক পরীক্ষার রুটিন বিদ্যালয় নোটিশ বোর্ডে পাওয়া যাবে।
             </span>
         </div>
     </div>
@@ -861,47 +875,33 @@
     <div class="hero-content">
         <div class="hero-text">
             <h2>স্বাগতম <br/><span>পূর্ণাছগাম উচ্চ বিদ্যালয়</span></h2>
-            <p>সিলেট জেলার কোম্পানীগঞ্জ উপজেলার মনোরম প্রাকৃতিক পরিবেশে ১৯৯৬ সালে প্রতিষ্ঠিত আমাদের এ বিদ্যালয়টি শিক্ষার্থীদের জন্য এক অনন্য শিক্ষা কেন্দ্র।</p>
+            <p>সিলেট জেলার কোম্পানীগঞ্জ উপজেলার মনোরম প্রাকৃতিক পরিবেশে ১९९६ সালে প্রতিষ্ঠিত হয়েছে।</p>
             <div class="hero-btns">
                 <a onclick="switchPage('home')" class="btn btn-primary">বিদ্যালয় পরিচিতি</a>
                 <a onclick="switchPage('teachers')" class="btn btn-outline">শিক্ষক তালিকা</a>
             </div>
         </div>
         <div class="hero-stats">
-            <div class="stat-card"><div class="num">১৯৯৬</div><div class="lbl">প্রতিষ্ঠা সাল</div></div>
-            <div class="stat-card"><div class="num">৪০০+</div><div class="lbl">অধ্যয়নরত শিক্ষার্থী</div></div>
-            <div class="stat-card"><div class="num">১৫+</div><div class="lbl">শিক্ষক ও কর্মচারী</div></div>
-            <div class="stat-card"><div class="num">৮৮%</div><div class="lbl">বিগত বোর্ড পাস হার</div></div>
+            <div class="stat-card"><div class="num">१९९६</div><div class="lbl">প্রতিষ্ঠা সাল</div></div>
+            <div class="stat-card"><div class="num">४००+</div><div class="lbl">অধ্যয়নরত শিক্ষার্থী</div></div>
+            <div class="stat-card"><div class="num">१५+</div><div class="lbl">শিক্ষক ও কর্মচারী</div></div>
+            <div class="stat-card"><div class="num">८८%</div><div class="lbl">বিগত বোর্ড পাস হার</div></div>
         </div>
     </div>
 </div>
 
 <!-- MAIN LAYOUT SCREEN -->
 <div class="main-wrapper">
-    
     <main class="main-content">
-
         <!-- HOME SECTION -->
         <div id="page-home" class="page-section active-section">
             <div class="sec-title">বিদ্যালয় পরিচিতি</div>
             <div style="margin-bottom: 20px;">
-                <img src="school_bannar.webp" alt="বিদ্যালয় ভবন" style="width:100%; height:auto; max-height:280px; object-fit:cover; border-radius:8px; background:#ddd; border:1px solid #ccc;">
+                <img src="school_bannar.webp" alt="বিদ্যালয় ভবন" style="width:100%; height:auto; max-height:280px; object-fit:cover; border-radius:8px; background:#ddd;">
             </div>
             <p style="color: var(--text); font-size: 15px; text-align: justify; line-height: 1.6; margin-bottom: 15px;">
-    সিলেট জেলার কোম্পানীগঞ্জ উপজেলার মনোরম ও প্রাকৃতিক পরিবেশে ১৯৯৬ সালে প্রতিষ্ঠিত আমাদের বিদ্যালয়টি এ অঞ্চলের সুপ্রতিষ্ঠিত শিক্ষা প্রতিষ্ঠান।
-</p>
-
-<p style="color: var(--text); font-size: 15px; text-align: justify; line-height: 1.6; margin-bottom: 15px;">
-    একটি দৃষ্টিনন্দন দোতলা ভবন এবং একটি টিনশেড কাঠামোর সমন্বয়ে গঠিত আমাদের এই বিদ্যালয়ের রয়েছে অত্যাধুনিক শিক্ষা ব্যবস্থা।
-</p>
-
-<p style="color: var(--text); font-size: 15px; text-align: justify; line-height: 1.6; margin-bottom: 15px;">
-    বর্তমানে বিদ্যালয়টিতে ষষ্ঠ থেকে দশম শ্রেণী পর্যন্ত মোট ৩৩৫ জন ছাত্র-ছাত্রী রয়েছে।
-</p>
-
-<p style="color: var(--text); font-size: 15px; text-align: justify; line-height: 1.6;">
-    পূর্ণাছগাম উচ্চ বিদ্যালয় কেবল একটি পাঠশালা নয়, এটি আমাদের মেধা, মনন ও স্বপ্নের লালনক্ষেত্র।
-</p>
+                সিলেট জেলার কোম্পানীগঞ্জ উপজেলার মনোরম ও প্রাকৃতিক পরিবেশে १९९६ সালে প্রতিষ্ঠিত।
+            </p>
             <div class="sec-title" style="margin-top: 25px;">আমাদের অভিভাবকবৃন্দ</div>
             <div class="biography-grid">
                 <div class="bio-card">
@@ -910,7 +910,7 @@
                         <h3>মোহাম্মদ রবিন মিয়া</h3> 
                         <div class="role">উপজেলা নির্বাহী অফিসার</div> 
                         <div class="role">সভাপতি,পূর্নাছগাম উচ্চ বিদ্যালয়</div> 
-                        <p>"শিক্ষাই প্রগতি। গভর্নিং বডির পক্ষ থেকে আমি বিদ্যালয়ের সার্বিক উন্নয়ন ও মান উন্নয়নে প্রতিশ্রুতিবদ্ধ।"</p>
+                        <p>"শিক্ষাই প্রগতি।"</p>
                     </div>
                 </div>
                 <div class="bio-card">
@@ -918,164 +918,13 @@
                     <div class="bio-info">
                         <h3>শাহেদ আহমদ</h3>
                         <div class="role">প্রধান শিক্ষক(ভারপ্রাপ্ত)</div>
-                        <p>"আমাদের লক্ষ্য কেবল পাঠ্যপুস্তকীয় জ্ঞান নয়, বরং শিক্ষার্থীদের চরিত্র ও নৈতিকতা গঠন করা।"</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sec-title" style="margin-top: 20px;">গৌরবময় অর্জনসমূহ</div>
-            <div class="achievement-item">🏆 <strong>এসএসসি পরীক্ষা ২০२४:</strong> অত্র বিদ্যালয় থেকে শতভাগ (১०০%) ছাত্র-ছাত্রী পাস করেছে।</div>
-            <div class="achievement-item">🥇 <strong>উপজেলা ক্রীড়া প্রতিযোগিতা २०२५:</strong> আন্তঃস্কুল ফুটবল ও ক্রিকেট প্রতিযোগিতায় চ্যাম্পিয়ন হয়েছি।</div>
-            <div class="achievement-item">🌿 <strong>সেরা পরিবেশ পদক:</strong> বৃক্ষরোপণ ও পরিচ্ছন্ন ক্যাম্পাসের জন্য আমরা গর্বিত।</div>
-
-            <div class="sec-title" style="margin-top: 30px;">আমাদের কৃতি শিক্ষার্থীবৃন্দ</div>
-            <div class="achievers-grid">
-                
-                <div class="achiever-card">
-                    <div class="achiever-img-box">
-                        <img src="student1.webp" alt="কৃতি শিক্ষার্থী">
-                    </div>
-                    <div class="achiever-details">
-                        <h3>জয়দেব বিশ্বাস</h3>
-                        <span class="achiever-badge scholarship">জুনিয়র বৃত্তি २०२५ (ট্যালেন্টপুল)</span>
-                    </div>
-                </div>
-
-                <div class="achiever-card">
-                    <div class="achiever-img-box">
-                        <img src="student2.webp" alt="কৃতি শিক্ষার্থী">
-                    </div>
-                    <div class="achiever-details">
-                        <h3>নাজিয়া রহমান নিশাত</h3>
-                        <span class="achiever-badge scholarship">জুনিয়র বৃত্তি २०२५ (সাধারন)</span>
-                    </div>
-                </div>
-
-                <div class="achiever-card">
-                    <div class="achiever-img-box">
-                        <img src="student3.webp" alt="কৃতি শিক্ষার্থী">
-                    </div>
-                    <div class="achiever-details">
-                        <h3>তমা রানী দাস</h3>
-                        <span class="achiever-badge scholarship">এসএসসি २०२५ -সাধারন বৃত্তি (মানবিক)</span>
-                    </div>
-                </div>
-
-                <div class="achiever-card">
-                    <div class="achiever-img-box">
-                        <img src="student4.webp" alt="কৃতি শিক্ষার্থী">
-                    </div>
-                    <div class="achiever-details">
-                        <h3>মাইশা আক্তার মীম</h3>
-                        <span class="achiever-badge ssc">এসএসসি २०२५ (জিপিএ ५.००)</span>
-                    </div>
-                </div>
-
-                <div class="achiever-card">
-                    <div class="achiever-img-box">
-                        <img src="student5.webp" alt="কৃতি শিক্ষার্থী">
-                    </div>
-                    <div class="achiever-details">
-                        <h3>সানজিদা আক্তার রিপা</h3>
-                        <span class="achiever-badge ssc">এসএসসি २०२५ (জিপিএ ५.००)</span>
-                    </div>
-                </div>
-
-                <div class="achiever-card">
-                    <div class="achiever-img-box">
-                        <img src="student6.webp" alt="কৃতি শিক্ষার্থী">
-                    </div>
-                    <div class="achiever-details">
-                        <h3>জান্নাতুল ফেরদৌসী ইভা</h3>
-                        <span class="achiever-badge ssc">এসএসসি २०२३ (জিপিএ ५.००)</span>
-                    </div>
-                </div>
-
-                <div class="achiever-card">
-                    <div class="achiever-img-box">
-                        <img src="student7.webp" alt="কৃতি শিক্ষার্থী">
-                    </div>
-                    <div class="achiever-details">
-                        <h3>আব্দুর রশিদ</h3>
-                        <span class="achiever-badge ssc">এসএসসি २०२२ (জিপিএ ५.००)</span>
+                        <p>"আমাদের লক্ষ্য সর্বোত্তম শিক্ষা প্রদান করা।"</p>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- TEACHERS SECTION -->
-        <div id="page-teachers" class="page-section">
-            <div class="sec-title">শিক্ষক ও কর্মচারী দল</div>
-            <div class="teacher-grid">
-                <div class="teacher-card">
-                    <div class="t-avatar-wrapper">
-                        <img src="teacher1.webp" alt="শিক্ষক">
-                    </div>
-                    <div class="t-info">
-                        <h3 class="t-name">মোঃ আবুল কাশেম</h3>
-                        <p class="t-role">গণিত শিক্ষক</p>
-                        <p class="t-contact">📞 01700-000001</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- STUDENTS SECTION -->
-        <div id="page-students" class="page-section">
-            <div class="sec-title">শিক্ষার্থী কর্নার</div>
-            <div class="main-counters-grid">
-                <div class="counter-card">
-                    <h4>মোট শিক্ষার্থী</h4>
-                    <div class="num">३३५</div>
-                </div>
-                <div class="counter-card gold-accent">
-                    <h4>ছাত্র</h4>
-                    <div class="num">१८०</div>
-                </div>
-                <div class="counter-card">
-                    <h4>ছাত্রী</h4>
-                    <div class="num">१५५</div>
-                </div>
-                <div class="counter-card gold-accent">
-                    <h4>শ্রেণী সংখ্যা</h4>
-                    <div class="num">५</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ACADEMIC SECTION -->
-        <div id="page-academic" class="page-section">
-            <div class="sec-title">একাডেমিক রুটিন</div>
-            <div class="item-box">
-                <strong>ক্লাস রুটিন २०२६</strong>
-                <p>সকল শ্রেণীর নতুন ক্লাস রুটিন এখানে পাওয়া যাবে।</p>
-                <a href="#" class="download-btn">📥 ডাউনলোড</a>
-            </div>
-        </div>
-
-        <!-- NOTICES SECTION -->
-        <div id="page-notices" class="page-section">
-            <div class="sec-title">নোটিশ বোর্ড</div>
-            <div class="item-box">
-                <strong>নতুন ভর্তি নোটিশ</strong>
-                <p>२०२६ সালের নতুন শিক্ষার্থী ভর্তির জন্য নোটিশ প্রকাশিত হয়েছে।</p>
-                <a href="#" class="download-btn">📥 বিস্তারিত</a>
-            </div>
-        </div>
-
-        <!-- GALLERY SECTION -->
-        <div id="page-gallery" class="page-section">
-            <div class="sec-title">ফটো গ্যালারি</div>
-            <div class="gallery-grid">
-                <div class="photo-card">
-                    <img src="photo1.webp" alt="বিদ্যালয়ের ছবি">
-                </div>
-            </div>
-        </div>
-
     </main>
-
-    <!-- SIDEBAR -->
+    
     <aside class="sidebar">
         <div class="notice-board">
             <div class="sidebar-header">সর্বশেষ নোটিশ</div>
@@ -1083,77 +932,67 @@
                 <div class="sidebar-item">
                     <div class="sidebar-dot"></div>
                     <div>
-                        <a href="#">নতুন ভর্তি নোটিশ</a>
-                        <p class="sidebar-date">२०२६-०१-०१</p>
+                        <a href="#">২०२६ অর্ধবার্ষিক পরীক্ষা রুটিন</a>
+                        <div class="sidebar-date">আজ</div>
                     </div>
                 </div>
             </div>
         </div>
     </aside>
-
 </div>
 
 <!-- FOOTER -->
 <footer>
     <div class="footer-inner">
         <div class="footer-about">
-            <h3>পূর্ণাছগাম উচ্চ বিদ্যালয়</h3>
-            <p>শিক্ষা হল সমাজের মেরুদণ্ড এবং আমরা সেই মেরুদণ্ড শক্তিশালী করতে প্রতিশ্রুতিবদ্ধ।</p>
+            <h3>পূর্ণাছগাম উ��্চ বিদ্যালয়</h3>
+            <p>মানসম্পন্ন শিক্ষা প্রদানে প্রতিশ্রুতিবদ্ধ।</p>
             <div class="contact-info">
-                <div><strong>ঠিকানা:</strong> খাগাইল বাজার, কোম্পানীগঞ্জ, সিলেট</div>
-                <div><strong>ফোন:</strong> 01309-130231</div>
                 <div><strong>ইমেইল:</strong> purnachogum@gmail.com</div>
+                <div><strong>ফোন:</strong> 01309-130231</div>
             </div>
         </div>
         <div class="footer-col">
-            <h4>দ্রুত লিংক</h4>
-            <a href="#">হোমপেজ</a>
-            <a href="#">শিক্ষকমণ্ডলী</a>
-            <a href="#">শিক্ষার্থীরা</a>
-            <a href="#">যোগাযোগ</a>
+            <h4>নেভিগেশন</h4>
+            <a onclick="switchPage('home')">হোমপেজ</a>
+            <a onclick="switchPage('teachers')">শিক্ষক তালিকা</a>
+            <a onclick="switchPage('students')">শিক্ষার্থী কর্নার</a>
         </div>
         <div class="footer-col">
-            <h4>অনুসরণ করুন</h4>
-            <a href="https://www.facebook.com/profile.php?id=100013431248539" target="_blank">Facebook</a>
+            <h4>তথ্য</h4>
+            <a href="#">গোপনীয়তা নীতি</a>
+            <a href="#">শর্তাবলী</a>
+            <a href="#">যোগাযোগ করুন</a>
         </div>
     </div>
     <div class="footer-bottom">
         <span>&copy; २०२६ পূর্ণাছগাম উচ্চ বিদ্যালয়। সর্বাধিকার সংরক্ষিত।</span>
+        <span>ডিজাইন ও উন্নয়ন: PCHS Web Team</span>
     </div>
 </footer>
 
 <script>
-    // স্মুথ স্ক্রল ফাংশন - Homepage (হোমপেজ) ছাড়া সবার জন্য ব্যানারের নিচে স্ক্রল করবে
-    function switchPage(pageName) {
-        // সকল সেকশন লুকানো
-        document.querySelectorAll('.page-section').forEach(section => {
-            section.classList.remove('active-section');
-        });
-
-        // নেভিগেশন আইটেম থেকে active ক্লাস সরানো
-        document.querySelectorAll('.nav-inner a').forEach(link => {
-            link.classList.remove('active');
-        });
-
-        // সিলেক্ট করা পেজ দেখানো
-        document.getElementById('page-' + pageName).classList.add('active-section');
-        document.getElementById('tab-' + pageName).classList.add('active');
-
-        // মোবাইলে (max-width: 768px) অটো স্ক্রল হবে
-        if (window.innerWidth <= 768) {
-            if (pageName === 'home') {
-                // হোম পেজে শীর্ষে স্ক্রল করবে
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                // অন্যদের জন্য ব্যানারের নিচে স্ক্রল করবে
-                const bannerAnchor = document.getElementById('banner-anchor');
-                if (bannerAnchor) {
-                    const targetPosition = bannerAnchor.offsetHeight;
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                }
-            }
-        }
+function switchPage(page) {
+    // Hide all sections
+    const sections = document.querySelectorAll('.page-section');
+    sections.forEach(s => s.classList.remove('active-section'));
+    
+    // Remove active class from all tabs
+    const tabs = document.querySelectorAll('.nav-inner a');
+    tabs.forEach(t => t.classList.remove('active'));
+    
+    // Show selected section
+    const pageEl = document.getElementById('page-' + page);
+    if(pageEl) {
+        pageEl.classList.add('active-section');
     }
+    
+    // Add active class to clicked tab
+    const tabEl = document.getElementById('tab-' + page);
+    if(tabEl) {
+        tabEl.classList.add('active');
+    }
+}
 </script>
 
 </body>
