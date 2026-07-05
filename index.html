@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>পূর্ণাছগাম উচ্চ বিদ্যালয় | কোম্পানীগঞ্জ, সিলেট</title>
+    <title>pchs|purnachogum high school|পূর্ণাছগাম উচ্চ বিদ্যালয় | কোম্পানীগঞ্জ, সিলেট</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&family=Anek+Bangla:wght@400;600;700&display=swap" rel="stylesheet"/>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1863,20 +1863,35 @@ document.addEventListener('DOMContentLoaded', renderStudents);
 document.addEventListener('DOMContentLoaded', updateOfficeStatus);
 document.addEventListener('DOMContentLoaded', updateOfficeStatus);
     function switchPage(pageId) {
-        const sections = document.querySelectorAll('.page-section');
-        sections.forEach(sec => sec.classList.remove('active-section'));
+    const sections = document.querySelectorAll('.page-section');
+    sections.forEach(sec => sec.classList.remove('active-section'));
 
-        const targetSection = document.getElementById('page-' + pageId);
-        if(targetSection) targetSection.classList.add('active-section');
+    const targetSection = document.getElementById('page-' + pageId);
+    if (targetSection) targetSection.classList.add('active-section');
 
-        const tabs = document.querySelectorAll('.nav-inner a');
-        tabs.forEach(tab => tab.classList.remove('active'));
-        
-        const activeTab = document.getElementById('tab-' + pageId);
-        if(activeTab) activeTab.classList.add('active');
+    const tabs = document.querySelectorAll('.nav-inner a');
+    tabs.forEach(tab => tab.classList.remove('active'));
 
+    const activeTab = document.getElementById('tab-' + pageId);
+    if (activeTab) activeTab.classList.add('active');
+
+    // --- এখানে মোবাইল স্ক্রলিংয়ের নতুন লজিক যুক্ত করা হলো ---
+    if (window.innerWidth <= 768 && pageId !== 'home') {
+        // মোবাইল ভিউতে হোমপেজ বাদে বাকি সেকশনের শুরুতে স্ক্রল করবে
+        setTimeout(() => {
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 90, // ওপরের ফিক্সড মেন্যুর জন্য ৯০ পিক্সেল জায়গা ছাড়বে
+                    behavior: 'smooth'
+                });
+            }
+        }, 100); // পেজটি দৃশ্যমান হতে ১০০ মিলিসেকেন্ড সময় দেবে
+    } else {
+        // কম্পিউটার (Desktop) ভিউতে অথবা হোমপেজে ক্লিক করলে আগের মতোই ২৫০ পিক্সেল স্ক্রল হবে
         window.scrollTo({top: 250, behavior: 'smooth'});
     }
+}
+
     // নোটিশ পপ-আপ ওপেন করার ফাংশন
 function openNoticeModal(title, date, category, content) {
     document.getElementById('n-modal-title').innerText = title;
