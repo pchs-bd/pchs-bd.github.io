@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>pchs|purnachogum high school|পূর্ণাছগাম উচ্চ বিদ্যালয় | কোম্পানীগঞ্জ, সিলেট</title>
-<link rel="icon" type="image/png" href="logo.png">
-
+    <title>Purnachogum High School ,Companiganj , Sylhet|পূর্ণাছগাম উচ্চ বিদ্যালয়,কোম্পানীগঞ্জ, সিলেট</title>
+    <link rel="icon" href="logo.png" type="image/png"/>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&family=Anek+Bangla:wght@400;600;700&display=swap" rel="stylesheet"/>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -318,6 +317,92 @@
     align-items: center;
     gap: 6px;
 }
+/* টিচার কার্ডে মাউস নিলে যা ঘটবে */
+.teacher-card {
+    cursor: pointer; /* 👈 মাউসের তীর চিহ্নকে হাতের মতো (ক্লিকযোগ্য) বানাবে */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* মাউস কার্ডের ওপর রাখলে কার্ডটি সামান্য ওপরে উঠবে ও ছায়া গাঢ় হবে */
+.teacher-card:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 6px 16px rgba(11, 43, 83, 0.15);
+    border-color: #0b2b53; /* বর্ডার কালার স্কুলের থিম কালার হবে */
+}
+
+/* "বিস্তারিত দেখুন" লেখার স্টাইল */
+.view-details {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #0b2b53; /* স্কুলের নীল/গাঢ় থিম কালার */
+    font-weight: bold;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background-color: #f0f4f8;
+    transition: all 0.2s ease;
+}
+
+/* মাউস কার্ডে নিলে বাটনটির রঙ একটু উজ্জ্বল হবে */
+.teacher-card:hover .view-details {
+    background-color: #0b2b53;
+    color: #ffffff;
+}
+/* শিক্ষক মডাল ব্যাকগ্রাউন্ড ওভারলে */
+.t-modal-overlay {
+    display: none; /* ডিফল্ট অবস্থায় বন্ধ */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(11, 43, 83, 0.6); /* গাঢ় নীল ওভারলে */
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* শিক্ষক মডাল মেইন বক্স */
+.t-modal-card {
+    background: #ffffff;
+    width: 90%;
+    max-width: 480px;
+    border-radius: 12px;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: tPopupSlide 0.3s ease-in-out;
+}
+
+/* শিক্ষক মডালের ক্লোজ বাটন */
+.t-close-btn {
+    position: absolute;
+    top: 12px; right: 18px;
+    font-size: 28px; cursor: pointer; color: #666;
+}
+.t-close-btn:hover { color: #ff0000; }
+
+.t-modal-header { text-align: center; margin-bottom: 20px; }
+.t-modal-header h3 { color: #0b2b53; font-size: 22px; margin-bottom: 5px;}
+
+/* শিক্ষক মডালের পদবী ব্যাজ */
+.t-modal-badge {
+    display: inline-block; background: #0b2b53; color: #fff;
+    padding: 3px 10px; border-radius: 15px; font-size: 13px; margin: 2px;
+}
+
+.t-modal-body p {
+    margin-bottom: 12px; font-size: 15px; color: #333;
+    border-bottom: 1px solid #f1f1f1; padding-bottom: 6px;
+}
+.t-modal-body p strong { color: #111; }
+
+@keyframes tPopupSlide {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+
 /* শিক্ষার্থী পরিসংখ্যান সেকশন ডিজাইন */
 #page-students {
     background: #fafafa;
@@ -946,7 +1031,7 @@
                         <img src="student2.webp" alt="কৃতি শিক্ষার্থী">
                     </div>
                     <div class="achiever-details">
-                        <h3>নাজিয়া রহমান নিশাত</h3>
+                        <h3>নাজিহা রহমান নিশাত</h3>
                         <span class="achiever-badge scholarship">জুনিয়র বৃত্তি ২০২৫ (সাধারন)</span>
                     </div>
                 </div>
@@ -1009,7 +1094,8 @@
             <div class="sec-title">সম্মানিত শিক্ষকমণ্ডলী ও কর্মচারীবৃন্দ</div>
             
             <div class="teacher-grid">
-                <div class="teacher-card">
+                <div class="teacher-card" onclick="openModal(this)">
+                
                     <div class="t-avatar-wrapper"><img src="teacher1.webp" alt="শাহেদ আহমদ"></div>
                     <div class="t-info">
                         <div class="t-name">শাহেদ আহমদ</div> 
@@ -1017,153 +1103,192 @@
                         <div class="t-role">প্রধান শিক্ষক(ভারপ্রাপ্ত)</div>
                         <div class="t-contact">📞 01718-183233</div>
                         <div class="t-contact">index:1051633</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
-                    <div class="t-avatar-wrapper"><img src="teacher2.webp" alt="গোলাম রব্বানী"></div>
+                <div class="teacher-card" onclick="openModal(this)">
+            
+                    <div class="t-avatar-wrapper"><img src="teacher2.webp" alt="মুহা: গোলাম রাব্বানী"></div>
                     <div class="t-info">
-                        <div class="t-name">মুহা: গোলাম রব্বানী</div>
+                        <div class="t-name">মুহা: গোলাম রাব্বানী</div>
                         <div class="t-role">সিনিয়র শিক্ষক (ইসলাম ধর্ম)</div>
                         <div class="t-contact">📞 01721-593671</div>
                         <div class="t-contact">index:1053963</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
-                    <div class="t-avatar-wrapper"><img src="teacher3.webp" alt="বীর বিক্রম"></div>
+                <div class="teacher-card" onclick="openModal(this)">
+                    
+                    <div class="t-avatar-wrapper"><img src="teacher3.webp" alt="বীর বিক্রম চৌধুরী"></div>
                     <div class="t-info">
                         <div class="t-name">বীর বিক্রম চৌধুরী</div>
                         <div class="t-role">সহকারী শিক্ষক (গণিত)</div>
                         <div class="t-contact">📞 01712-148153</div>
                         <div class="t-contact">index:1111759</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
-                    <div class="t-avatar-wrapper"><img src="teacher4.webp" alt="কাজল চন্দ্র"></div>
+                <div class="teacher-card" onclick="openModal(this)">
+                
+                    <div class="t-avatar-wrapper"><img src="teacher4.webp" alt="কাজল চন্দ্র দাস"></div>
                     <div class="t-info">
                         <div class="t-name">কাজল চন্দ্র দাস</div>
                         <div class="t-role">সহকারী শিক্ষক (সমাজবিজ্ঞান)</div>
                         <div class="t-contact">📞 01741-160008</div>
                         <div class="t-contact">index:1045117</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
+                <div class="teacher-card" onclick="openModal(this)">
                     <div class="t-avatar-wrapper"><img src="teacher5.webp" alt="উত্তম বেপারী"></div>
                     <div class="t-info">
                         <div class="t-name">উত্তম বেপারী</div>
-                        <div class="t-role">সহকারী শিক্ষক (কৃষি)</div>
+                        <div class="t-role">সিনিয়র শিক্ষক (কৃষি)</div>
                         <div class="t-contact">📞 01734-678152</div>
                         <div class="t-contact">index:1062696</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
-                    <div class="t-avatar-wrapper"><img src="teacher6.webp" alt="রশিদুল আলম"></div>
+                <div class="teacher-card" onclick="openModal(this)">
+                    <div class="t-avatar-wrapper"><img src="teacher6.webp" alt="মো: রশিদুল আলম"></div>
                     <div class="t-info">
                         <div class="t-name">মো: রশিদুল আলম</div>
                         <div class="t-role">সহকারী শিক্ষক (ভৌত বিজ্ঞান)</div>
                         <div class="t-contact">📞 01758-516565</div>
                         <div class="t-contact">index:56826461</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
+                <div class="teacher-card" onclick="openModal(this)">
                     <div class="t-avatar-wrapper"><img src="teacher7.webp" alt="মিহিকা বিশ্বাস"></div>
                     <div class="t-info">
                         <div class="t-name">মিহিকা বিশ্বাস</div>
                         <div class="t-role">সহকারী শিক্ষক (হিন্দু ধর্ম)</div>
                         <div class="t-contact">📞 01767-373634</div>
                         <div class="t-contact">index:1149870</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
+                <div class="teacher-card" onclick="openModal(this)">
                     <div class="t-avatar-wrapper"><img src="teacher8.webp" alt="শারমীন শাম্মী"></div>
                     <div class="t-info">
                         <div class="t-name">শারমীন শাম্মী</div>
                         <div class="t-role">সহকারী শিক্ষক (ব্যবসায় শিক্ষা)</div>
                         <div class="t-contact">📞 01913-005071</div>
                         <div class="t-contact">index:56873107</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
+                <div class="teacher-card" onclick="openModal(this)">
                     <div class="t-avatar-wrapper"><img src="teacher9.webp" alt="ইকরাম হোসেন খান জারিফ"></div>
                     <div class="t-info">
                         <div class="t-name">ইকরাম হোসেন খান জারিফ</div>
                         <div class="t-role">সহকারী শিক্ষক(খন্ডকালীন)</div>
                         <div class="t-contact">📞 01572906297 </div>
                         <div class="t-contact">-</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
+                <div class="teacher-card" onclick="openModal(this)">
                     <div class="t-avatar-wrapper"><img src="teacher10.webp" alt="সেলিনা বেগম"></div>
                     <div class="t-info">
                         <div class="t-name">সেলিনা বেগম</div>
                         <div class="t-role">সহকারী শিক্ষক(খন্ডকালীন)</div>
                         <div class="t-contact">📞 01314808780</div>
                         <div class="t-contact">-</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
+                <div class="teacher-card" onclick="openModal(this)">
                     <div class="t-avatar-wrapper"><img src="teacher11.webp" alt="নিপা দাস"></div>
                     <div class="t-info">
                         <div class="t-name">নিপা দাস </div>
                         <div class="t-role">সহকারী শিক্ষক(খন্ডকালীন)</div>
                         <div class="t-contact">📞 01314064938</div>
                         <div class="t-contact">-</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
+                <div class="teacher-card" onclick="openModal(this)">
                     <div class="t-avatar-wrapper"><img src="staff1.webp" alt="মামুনুর রশীদ"></div> 
                     <div class="t-info">
                         <div class="t-name">মামুনুর রশীদ</div>
                         <div class="t-role">কম্পিউটার ল্যাব অপারেটর</div>
                         <div class="t-contact">📞 01764-699599</div>
                         <div class="t-contact">index:56853618</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
+                <div class="teacher-card" onclick="openModal(this)">
                     <div class="t-avatar-wrapper"><img src="staff2.webp" alt="কয়ছর আহমদ"></div>
                     <div class="t-info">
                         <div class="t-name">কয়ছর আহমদ</div>
                         <div class="t-role">নিরাপত্তা কর্মী</div>
                         <div class="t-contact">📞 01739-945320</div>
                         <div class="t-contact">index:1045120</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
+                <div class="teacher-card" onclick="openModal(this)">
                     <div class="t-avatar-wrapper"><img src="staff3.webp" alt="রাজু দাস"></div>
                     <div class="t-info">
                         <div class="t-name">রাজু দাস</div>
                         <div class="t-role">নৈশ প্রহরী</div>
                         <div class="t-contact">📞 01859-958472</div>
                         <div class="t-contact">index:56810644</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
+                <div class="teacher-card" onclick="openModal(this)">
                     <div class="t-avatar-wrapper"><img src="staff4.webp" alt="তাহের উদ্দিন"></div>
                     <div class="t-info">
                         <div class="t-name">তাহের উদ্দিন</div>
                         <div class="t-role">অফিস সহায়ক</div>
                         <div class="t-contact">📞 01719-720005</div>
                         <div class="t-contact">index:56855389</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
-                    <div class="t-avatar-wrapper"><img src="staff5.webp" alt="রাহেলী আক্তার"></div>
+                <div class="teacher-card" onclick="openModal(this)">
+                    <div class="t-avatar-wrapper"><img src="staff5.webp" alt="রাহেলী আক্তার রুলি"></div>
                     <div class="t-info">
                         <div class="t-name">রাহেলী আক্তার রুলি</div>
                         <div class="t-role">আয়া</div>
                         <div class="t-contact">📞 01751-096173</div>
                         <div class="t-contact">index:56855411</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
-                <div class="teacher-card">
-                    <div class="t-avatar-wrapper"><img src="staff6.webp" alt="রুজিনা বেগম"></div>
+                <div class="teacher-card" onclick="openModal(this)">
+                    <div class="t-avatar-wrapper"><img src="staff6.webp" alt="মোছা: রুজিনা বেগম"></div>
                     <div class="t-info">
                         <div class="t-name">মোছা: রুজিনা বেগম</div>
                         <div class="t-role">পরিচ্ছন্নতা কর্মী</div>
                         <div class="t-contact">📞 01720-369300</div>
                         <div class="t-contact">index:56855415</div>
+                        <div class="view-details">বিস্তারিত দেখুন &rarr;</div>
                     </div>
                 </div>
             </div> 
+            <div id="teacherModal" class="t-modal-overlay">
+    <div class="t-modal-card">
+        <span class="t-close-btn" onclick="closeModal()">&times;</span>
+        
+        <div class="t-modal-header">
+            <img id="modalImg" src="" alt="" style="width:110px; height:110px; border-radius:50%; object-fit:cover; border: 3px solid #28a745; margin-bottom: 10px;">
+            <h3 id="modalName"></h3>
+            <div id="modalRoles"></div>
+        </div>
+        
+        <div class="t-modal-body">
+            <p><strong>যোগাযোগ:</strong> <span id="modalContact"></span></p>
+            <p><strong>ইনডেক্স নম্বর:</strong> <span id="modalIndex"></span></p>
+            <p><strong>জন্ম তারিখ:</strong> <span id="modalBirth"></span></p>
+            <p><strong>স্থায়ী ঠিকানা:</strong> <span id="modalAddress"></span></p>
+            <p><strong>যোগদানের বিবরণ:</strong> <span id="modalJoin"></span></p>
+        </div>
+    </div>
+</div>
             <!-- <div class="former-heads-container">
                 <div class="sec-title" style="margin-top: 60px; margin-bottom: 20px;"> বিদ্যালয় প্রধানগণের তালিকা</div>
                 <div class="table-responsive">
@@ -1308,6 +1433,11 @@
 
     <div class="student-profile-grid" id="dynamicStudentGrid">
         </div>
+        <div style="text-align: center; margin-top: 30px;">
+    <button id="load-more-btn" class="btn btn-primary" style="padding: 10px 30px; border-radius: 25px;">
+        আরও শিক্ষার্থী দেখুন
+    </button>
+</div>
 </section>
         </div>
 
@@ -1495,18 +1625,18 @@
             <a href="https://moedu.gov.bd" target="_blank">শিক্ষা মন্ত্রণালয়</a>
             <a href="http://www.educationboardresults.gov.bd" target="_blank">ফলাফল পোর্টাল</a>
         </div>
-        <div class="footer-col">
+        <!-- <div class="footer-col">
             <h4>সাইট ম্যাপ</h4>
             <a onclick="switchPage('home')">হোম পরিচিতি</a>
             <a onclick="switchPage('teachers')">শিক্ষক তালিকা</a>
             <a onclick="switchPage('academic')">পরীক্ষার রুটিন</a>
             <a onclick="switchPage('notices')">নোটিশ বোর্ড</a>
             <a onclick="switchPage('gallery')">ফটো গ্যালারি</a>
-        </div>
+        </div> -->
     </div>
     <div class="footer-bottom">
         <span>© ২০২৬ পূর্ণাছগাম উচ্চ বিদ্যালয়। সর্বস্বত্ব সংরক্ষিত।</span>
-        <span>কোডিং নিরাপত্তা: ১০০% সুরক্ষিত (Static Web Core)</span>
+    
     </div>
     <!-- নোটিশ দেখার ডাইনামিক পপ-আপ মডাল -->
 <div id="noticeModal" class="notice-modal">
@@ -1728,23 +1858,36 @@ function updateOfficeStatus() {
 // ==========================================
 const studentsDatabase = [
     // ৯ম ও ১০ম শ্রেণীর জন্য 'group' দিতে হবে (বিজ্ঞান / মানবিক / ব্যবসায় শিক্ষা)
-    { name: " ", class: "১০ম", roll: "০১", group: "বিজ্ঞান", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
-    { name: " ", class: "১০ম", roll: "০২", group: "বিজ্ঞান", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
+    //১০ম (বিজ্ঞান)
+    { name: "শিবজয় দাস ইমন", class: "১০ম", roll: "০১", group: "বিজ্ঞান", blood: "O+", address: " ,কোম্পানীগঞ্জ, সিলেট" },
+    { name: " ", class: "১০ম", roll: "০২", group: "বিজ্ঞান", blood: "", address: " ,কোম্পানীগঞ্জ, সিলেট" },
     { name: "সুমাইয়া আক্তার ", class: "১০ম", roll: "০৩", group: "বিজ্ঞান", blood: "B+", address: "পুর্নাছগাম,কোম্পানীগঞ্জ, সিলেট" },
     { name: " ", class: "১০ম", roll: "০৪", group: "বিজ্ঞান", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
     { name: "ছামিয়া আক্তার পান্না ", class: "১০ম", roll: "০৫ ", group: "বিজ্ঞান", blood: "B+ ", address: "সুন্দাউরা ,কোম্পানীগঞ্জ, সিলেট" },
     { name: "হৃদি রানী দাস ", class: "১০ম", roll: "০৬", group: "বিজ্ঞান", blood: "O+", address: "পুর্নাছগাম ,কোম্পানীগঞ্জ, সিলেট" },
-    { name: " ", class: "১০ম", roll: "০৭", group: "বিজ্ঞান", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
-    { name: " ", class: "১০ম", roll: "০৮", group: "বিজ্ঞান", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
-    { name: "জান্নাতুল ফেরদৌসী আয়শা", class: "১০ম", roll: "০৯", group: "বিজ্ঞান", blood: "A+", address: "দরাকুল,কোম্পানীগঞ্জ, সিলেট" },
-    { name: " ", class: "১০ম", roll: "১০", group: "বিজ্ঞান", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
+    { name: "", class: "১০ম", roll: "০৭", group: "বিজ্ঞান", blood: " ", address: ",কোম্পানীগঞ্জ, সিলেট" },
+    { name: "অনামিকা রানী বৈদ", class: "১০ম", roll: "০৮", group: "বিজ্ঞান", blood: "O+", address: "পূর্নাছগাম ,কোম্পানীগঞ্জ, সিলেট" },
+    { name: "জান্নাতুল ফেরদৌসী আয়শা", class: "১০ম", roll: "০৯", group: "বিজ্ঞান", blood: "B+", address: "দরাকুল,কোম্পানীগঞ্জ, সিলেট" },
+    { name: "আফসানা আফরিন কনা", class: "১০ম", roll: "১০", group: "বিজ্ঞান", blood: "AB+", address: "পূর্নাছগাম ,কোম্পানীগঞ্জ, সিলেট" },
     { name: " ", class: "১০ম", roll: "১১", group: "বিজ্ঞান", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
     { name: " ", class: "১০ম", roll: "১২", group: "বিজ্ঞান", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
     { name: " ", class: "১০ম", roll: "১৩", group: "বিজ্ঞান", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
-
-    { name: "মাহিমা আক্তার লিজা", class: "১০ম", roll: "০১", group: "ব্যবসায় শিক্ষা", blood: "B+", address: "রাজাপুর, কোম্পানীগঞ্জ, সিলেট" },
+//১০(ব্যাবসা)
+    { name: "মাহিমা আক্তার লিজা", class: "১০ম", roll: "০১", group: "ব্যবসায় শিক্ষা", blood: "O+", address: "রাজাপুর, কোম্পানীগঞ্জ, সিলেট" },
+    { name: "মরিয়ম বেগম", class: "১০ম", roll: "০২", group: "ব্যাবসায় শিক্ষা", blood: "O+", address: " পুর্নাছগাম,কোম্পানীগঞ্জ, সিলেট" },
+    { name: "সাহেলা আক্তার জুলি ", class: "১০ম", roll: "০৩", group: "ব্যাবসায় শিক্ষা", blood: "O+", address: "খাগাইল ,কোম্পানীগঞ্জ, সিলেট" },
+    { name: " ", class: "১০ম", roll: "০৪", group: "ব্যাবসায় শিক্ষা", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
+    { name: "নুসরাত জাহান নুহেনা ", class: "১০ম", roll: "০৫", group: "ব্যাবসায় শিক্ষা", blood: "O+", address: "ফুড়ারপার ,কোম্পানীগঞ্জ, সিলেট" },
+    { name: " ", class: "১০ম", roll: "০৬", group: "ব্যাবসায় শিক্ষা", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
+    { name: " ", class: "১০ম", roll: "০৭", group: "ব্যাবসায় শিক্ষা", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
+    { name: "মরিয়ম বেগম ", class: "১০ম", roll: "০৮", group: "ব্যাবসায় শিক্ষা", blood: "O+", address: "খাগাইল,কোম্পানীগঞ্জ, সিলেট" },
+    { name: " ", class: "১০ম", roll: "০৯", group: "ব্যাবসায় শিক্ষা", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
+    { name: " ", class: "১০ম", roll: "১০", group: "ব্যাবসায় শিক্ষা", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" }, 
+    { name: " ", class: "১০ম", roll: "১১", group: "ব্যাবসায় শিক্ষা", blood: " ", address: " ,কোম্পানীগঞ্জ, সিলেট" },
+    { name: "সুহেনা বেগম", class: "১০ম", roll: "১২", group: "ব্যাবসায় শিক্ষা", blood: "B+", address: "ফুড়ারপার ,কোম্পানীগঞ্জ, সিলেট" },
+//১০ (মানবিক)
+    { name: "শুষমিতা রানী দাস", class: "৯ম", roll: "০২", group: "মানবিক", blood: "O+", address: "পুর্নাছগাম ,কোম্পানীগঞ্জ, সিলেট" },
     
-  //  { name: "কামরুল হাসান", class: "৯ম", roll: "০৩", group: "মানবিক", blood: "O+", address: "টুকেরবাজার, সিলেট" },
     
     // ৬ষ্ঠ, ৭ম ও ৮ম শ্রেণীর জন্য 'group' ফাঁকা রাখলেই হবে, কোড নিজে থেকেই এটি হাইড করে দেবে
    // { name: "আফরিন আক্তার মিম", class: "৮ম", roll: "১০", group: "", blood: "AB+", address: "কোম্পানীগঞ্জ, সিলেট" },
@@ -1893,7 +2036,6 @@ document.addEventListener('DOMContentLoaded', updateOfficeStatus);
         window.scrollTo({top: 250, behavior: 'smooth'});
     }
 }
-
     // নোটিশ পপ-আপ ওপেন করার ফাংশন
 function openNoticeModal(title, date, category, content) {
     document.getElementById('n-modal-title').innerText = title;
@@ -2141,6 +2283,155 @@ function printSingleNotice() {
         </html>
     `);
     printWindow.document.close();
+}
+// --- লোড মোর (Load More) সংশোধিত কোড ---
+let currentItems =6 ; // শুরুতে ৪ জন দেখাবে
+const loadMoreBtn = document.getElementById('load-more-btn');
+
+function updateStudentVisibility() {
+    const allCards = document.querySelectorAll('.st-profile-card');
+    let visibleCount = 0;
+
+    allCards.forEach((card) => {
+        // নতুন লজিক: বাটন দিয়ে লুকানো কার্ডগুলোকেও গণনায় নেওয়া হবে
+        const isVisible = card.style.display !== 'none';
+        const isHiddenByButton = card.getAttribute('data-load-more-hidden') === 'true';
+
+        if (isVisible || isHiddenByButton) {
+            visibleCount++;
+            
+            if (visibleCount > currentItems) {
+                card.setAttribute('data-load-more-hidden', 'true');
+                card.style.setProperty('display', 'none', 'important');
+            } else {
+                card.removeAttribute('data-load-more-hidden');
+                card.style.display = 'block'; 
+            }
+        }
+    });
+
+    // লুকানো কার্ড না থাকলে বাটন চলে যাবে
+    const hiddenCards = Array.from(allCards).filter(card => card.getAttribute('data-load-more-hidden') === 'true');
+    if (hiddenCards.length === 0) {
+        loadMoreBtn.style.display = 'none';
+    } else {
+        loadMoreBtn.style.display = 'inline-block';
+    }
+}
+
+// বাটনে ক্লিক করলে আরও ৪ জন করে বাড়বে
+loadMoreBtn.addEventListener('click', () => {
+    currentItems += 6; 
+    updateStudentVisibility();
+});
+
+// ফিল্টার ট্যাবে ক্লিক করলে রিসেট
+document.querySelectorAll('.st-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        currentItems = 6; 
+        setTimeout(updateStudentVisibility, 50);
+    });
+});
+
+// সার্চ বক্সে কিছু লিখলে রিসেট
+const searchInput = document.querySelector('.portal-search input');
+if(searchInput) {
+    searchInput.addEventListener('input', () => {
+        currentItems = 6; 
+        setTimeout(updateStudentVisibility, 50);
+    });
+}
+
+// পেজ লোড হওয়ার পর প্রথমবার রান হবে
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(updateStudentVisibility, 500);
+});
+ // মাউসের রাইট ক্লিক বন্ধ করার জন্য
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // কিবোর্ডের F12, Ctrl+Shift+I, Ctrl+U ইত্যাদি শর্টকাট বন্ধ করার জন্য 
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) return false; // F12
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
+    }
+    // 💡 মোডালের নতুন এক্সট্রা তথ্যগুলো আপনি এখান থেকে ম্যানুয়ালি এডিট করতে পারবেন: 
+const extraTeacherData = {
+    "শাহেদ আহমদ": { birth: "14-09-1980", address: "গ্রাম: মির্জারগড়, ডাক: রাজাগঞ্জ ইউনিয়ন, কানাইঘাট, সিলেট।", join: "১ম যোগদান: ১৫/০৪/২০১০" },
+    "মুহা: গোলাম রাব্বানী": { birth: "01-03-1982", address: "গ্রাম: উমাইরগাঁও, ডাক: শিবের বাজার, সদর, সিলেট।", join: "১ম যোগদান: ২৪/১১/২০১০" },
+    "বীর বিক্রম চৌধুরী": { birth: "15-07-1969", address: "গ্রাম: রাজনাও, ডাক: জগদল, উপজেলা: দিরাই, জেলা: সুনামগঞ্জ।", join: "১ম যোগদান: ১০/০৬/২০১৪" },
+    "কাজল চন্দ্র দাস": { birth: "17-11-1972", address: "গ্রাম: কাবাড়ী পাড়া, ডাক: কুরুয়া বাজার, ওসমানী নগর, সিলেট।", join: "১ম যোগদান: ২৬/০১/২০০৬" },
+    "উত্তম বেপারী": { birth: "02-04-1987", address: "গ্রাম: ছৈলাবুনিয়া, ডাক: দীর্ঘা, নাজিরপুর, পিরোজপুর।", join: "১ম যোগদান: ০৬/০৭/২০১১" },
+    "মো: রশিদুল আলম": { birth: "01-09-1984", address: "গ্রাম: হাটনওগাঁ(বনানীপাড়া), ডাক: নওগাঁ, নওগাঁ সদর, নওগাঁ।", join: "১ম যোগদান: ২৬/০১/২০২২" },
+    "মিহিকা বিশ্বাস": { birth: "18-07-1991", address: "গ্রাম: বিতঙ্গল, ডাক: বিথঙ্গল, উপজেলা: বানিয়াচং, জেলা: হবিগঞ্জ।", join: "১ম যোগদান: ০৪/০২/২০১৯" },
+    "শারমীন শাম্মী": { birth: "01-12-1987", address: "গ্রাম: শ্রীরামপুর, ডাক: শ্রীরামপুর, উপজেলা: জামালপুর, জেলা: জামালপুর।", join: "১ম যোগদান: ০১/১০/২০২৩" },
+    "মামুনুর রশীদ": { birth: "03-05-2000", address: "গ্রাম: কায়েতগাঁও, ডাক: খাগাইল বাজার, উপজেলা: কোম্পানীগঞ্জ, জেলা: সিলেট।", join: "১ম যোগদান: ১৬/০২/২০২৩" },
+    "কয়ছর আহমদ": { birth: "01-01-1975", address: "গ্রাম: পূর্ণাছগাম, ডাক: খাগাইল বাজার, কোম্পানীগঞ্জ, সিলেট।", join: "১ম যোগদান: ২৬/০৮/২০০৬" },
+    "রাজু দাস": { birth: "14-01-1997", address: "গ্রাম: পূর্ণাছগাম, ডাক: খাগাইল বাজার, কোম্পানীগঞ্জ, সিলেট।", join: "১ম যোগদান: ২১/০৮/২০২১" },
+    "তাহের উদ্দিন": { birth: "09-08-2000", address: "গ্রাম: পানিচাপড়া হাওর, ডাক: খাগাইল বাজার, কোম্পানীগঞ্জ, সিলেট।", join: "১ম যোগদান: ১৬/০২/২০২৩" },
+    "রাহেলী আক্তার রুলি": { birth: "09-06-1990", address: "গ্রাম: পূর্ণাছগাম, ডাক: খাগাইল বাজার, কোম্পানীগঞ্জ, সিলেট।", join: "১ম যোগদান: ১৬/০২/২০২৩" },
+    "মোছা: রুজিনা বেগম": { birth: "20-11-1996", address: "গ্রাম: নোয়াগাঁও, ডাক: রণিথাই কামাল বস্তি, কোম্পানীগঞ্জ, সিলেট।", join: "১ম যোগদান: ১৬/০২/২০২৩" },
+    // 💡 খণ্ডকালীন শিক্ষকবৃন্দের অতিরিক্ত ডাটা ফর্মে না থাকায় আপাতত ফাঁকা রাখা হলো:
+    "ইকরাম হোসেন খান জারিফ": { birth: "-", address: "-", join: "-" },
+    "সেলিনা বেগম": { birth: "-", address: "-", join: "-" },
+    "নিপা দাস": { birth: "-", address: "-", join: "-" }
+};
+
+// মডাল ওপেন করার ফাংশন
+function openModal(card) {
+    // কার্ড থেকে নাম ও ছবি নেওয়া হচ্ছে
+    const name = card.querySelector('.t-name').innerText;
+    const imgSrc = card.querySelector('img').src;
+    
+    // পদবীগুলোকে নতুন সিএসএস ক্লাস 't-modal-badge' দিয়ে তৈরি করা হচ্ছে
+    const rolesHtml = Array.from(card.querySelectorAll('.t-role'))
+                           .map(role => `<span class="t-modal-badge">${role.innerText}</span>`)
+                           .join(' ');
+                           
+    const contacts = Array.from(card.querySelectorAll('.t-contact')).map(el => el.innerText);
+    let phone = '';
+    let indexNo = '';
+    
+    contacts.forEach(text => {
+        if(text.includes('📞') || text.startsWith('01')) {
+            phone = text;
+        } else {
+            indexNo = text;
+        }
+    });
+
+    // অবজেক্ট থেকে এক্সট্রা তথ্য খোঁজা হচ্ছে
+    const extra = extraTeacherData[name] || { birth: "-", address: "-", join: "-" };
+
+    // আইডি (ID) ধরে ধরে মডালে তথ্য বসানো হচ্ছে (তাই সিএসএস ক্লাস বদলালেও সমস্যা নেই)
+    document.getElementById('modalName').innerText = name;
+    document.getElementById('modalImg').src = imgSrc;
+    document.getElementById('modalRoles').innerHTML = rolesHtml;
+    document.getElementById('modalContact').innerText = phone;
+    document.getElementById('modalIndex').innerText = indexNo;
+    
+    // নতুন এক্সট্রা তথ্যগুলো বসানো
+    document.getElementById('modalBirth').innerText = extra.birth || "-";
+    document.getElementById('modalAddress').innerText = extra.address || "-";
+    document.getElementById('modalJoin').innerText = extra.join || "-";
+
+    // মডালটি প্রদর্শন করা (flex এর মাধ্যমে)
+    document.getElementById('teacherModal').style.display = 'flex';
+}
+
+// মডাল বন্ধ করার ফাংশন
+function closeModal() {
+    document.getElementById('teacherModal').style.display = 'none';
+}
+
+// মডালের বাইরের কালো বা ব্লার অংশে ক্লিক করলে বন্ধ হওয়ার লজিক
+window.onclick = function(event) {
+    const modal = document.getElementById('teacherModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
 }
 </script>
 </body>
