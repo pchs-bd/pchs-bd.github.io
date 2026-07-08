@@ -423,7 +423,7 @@
 
             // 📊 ৪. প্রথমে টেবিলে মার্জড (Merged) অবস্থায় বাংলা ১ম ও ২য় পত্র যোগ করা
             tableHtml += `<tr>
-                <td style="text-align: left; padding-left: 15px; vertical-align: middle;">BANGLA-I<br>BANGLA-II</td>
+                <td style="text-align: left; padding-left: 15px; vertical-align: middle;">বাংলা ১ম পত্র<br>বাংলা ২য় পত্র</td>
                 <td style="vertical-align: middle;">${b1.cq < 10 ? '0'+b1.cq : b1.cq}<br>${b2.cq < 10 ? '0'+b2.cq : b2.cq}</td>
                 <td style="vertical-align: middle;">${b1.mcq === "-" ? "-" : (b1.mcq < 10 ? '0'+b1.mcq : b1.mcq)}<br>${b2.mcq === "-" ? "-" : (b2.mcq < 10 ? '0'+b2.mcq : b2.mcq)}</td>
                 <td style="vertical-align: middle;">-<br>-</td>
@@ -468,13 +468,15 @@
                     mainSubjectsPoints += result.point;
                 }
 
-                let cqShow = sub.cq === 0 && sub.mcq === 0 ? "-" : (sub.cq < 10 ? '0'+sub.cq : sub.cq);
+                let cqShow = (sub.cq === 0 || sub.name.includes("তথ্য ও যোগাযোগ")) ? "-" : (sub.cq < 10 ? '0'+sub.cq : sub.cq);
+
                 let mcqShow = sub.mcq === 0 ? "-" : (sub.mcq < 10 ? '0'+sub.mcq : sub.mcq);
                 let pracShow = sub.prac === 0 ? "-" : (sub.prac < 10 ? '0'+sub.prac : sub.prac);
                 let optText = sub.isOptional ? " (৪র্থ বিষয়)" : "";
 
                 tableHtml += `<tr>
-                    <td style="text-align: left; padding-left: 15px;">${sub.name.toUpperCase()}${optText}</td>
+                    <td style="text-align: left; padding-left: 15px;">${sub.name}${optText}</td>
+
                     <td>${cqShow}</td><td>${mcqShow}</td><td>${pracShow}</td>
                     <td><strong>${sub.total < 100 ? '0'+sub.total : sub.total}</strong></td>
                     <td style="font-weight:bold; color:${result.grade==='F'?'red':'black'}">${result.grade}</td>
