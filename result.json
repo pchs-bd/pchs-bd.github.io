@@ -1,0 +1,269 @@
+{
+    "10_sci_1": {
+        "name": "শিবজয় দাস ইমন",
+        "pin": "3502",
+        "merit": "2",
+        "totalMarks": "796",
+        "verifyId": "PCHS-2026-10S01-7X9B",
+        "subjects": [
+            {
+                "name": "বাংলা (১ম ও ২য় পত্র)",
+                "cq": 65,
+                "mcq": 22,
+                "prac": 0,
+                "total": 87,
+                "isOptional": false
+            },
+            {
+                "name": "ইংরেজি (১ম ও ২য় পত্র)",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 75,
+                "isOptional": false
+            },
+            {
+                "name": "গণিত",
+                "cq": 58,
+                "mcq": 21,
+                "prac": 0,
+                "total": 79,
+                "isOptional": false
+            },
+            {
+                "name": "ইসলাম ও নৈতিক শিক্ষা",
+                "cq": 62,
+                "mcq": 23,
+                "prac": 0,
+                "total": 85,
+                "isOptional": false
+            },
+            {
+                "name": "পদার্থবিজ্ঞান",
+                "cq": 45,
+                "mcq": 19,
+                "prac": 24,
+                "total": 88,
+                "isOptional": false
+            },
+            {
+                "name": "রসায়ন",
+                "cq": 42,
+                "mcq": 18,
+                "prac": 23,
+                "total": 83,
+                "isOptional": false
+            },
+            {
+                "name": "জীববিজ্ঞান",
+                "cq": 46,
+                "mcq": 20,
+                "prac": 24,
+                "total": 90,
+                "isOptional": false
+            },
+            {
+                "name": "বাংলাদেশ ও বিশ্বপরিচয়",
+                "cq": 58,
+                "mcq": 22,
+                "prac": 0,
+                "total": 80,
+                "isOptional": false
+            },
+            {
+                "name": "তথ্য ও যোগাযোগ প্রযুক্তি",
+                "cq": 0,
+                "mcq": 21,
+                "prac": 23,
+                "total": 44,
+                "isOptional": false
+            },
+            {
+                "name": "উচ্চতর গণিত",
+                "cq": 44,
+                "mcq": 19,
+                "prac": 22,
+                "total": 85,
+                "isOptional": true
+            }
+        ]
+    },
+    "10_sci_2": {
+        "name": "ছামিয়া আক্তার",
+        "pin": "3659",
+        "merit": "1",
+        "totalMarks": "859",
+        "verifyId": "PCHS-2026-10S02-7X9B",
+        "subjects": [
+            {
+                "name": "বাংলা (১ম ও ২য় পত্র)",
+                "cq": 72,
+                "mcq": 24,
+                "prac": 0,
+                "total": 96,
+                "isOptional": false
+            },
+            {
+                "name": "ইংরেজি (১ম ও ২য় পত্র)",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 82,
+                "isOptional": false
+            },
+            {
+                "name": "গণিত",
+                "cq": 65,
+                "mcq": 23,
+                "prac": 0,
+                "total": 88,
+                "isOptional": false
+            },
+            {
+                "name": "ইসলাম ও নৈতিক শিক্ষা",
+                "cq": 68,
+                "mcq": 25,
+                "prac": 0,
+                "total": 93,
+                "isOptional": false
+            },
+            {
+                "name": "পদার্থবিজ্ঞান",
+                "cq": 48,
+                "mcq": 22,
+                "prac": 25,
+                "total": 95,
+                "isOptional": false
+            },
+            {
+                "name": "রসায়ন",
+                "cq": 45,
+                "mcq": 20,
+                "prac": 24,
+                "total": 89,
+                "isOptional": false
+            },
+            {
+                "name": "জীববিজ্ঞান",
+                "cq": 49,
+                "mcq": 23,
+                "prac": 25,
+                "total": 97,
+                "isOptional": false
+            },
+            {
+                "name": "বাংলাদেশ ও বিশ্বপরিচয়",
+                "cq": 62,
+                "mcq": 24,
+                "prac": 0,
+                "total": 86,
+                "isOptional": false
+            },
+            {
+                "name": "তথ্য ও যোগাযোগ প্রযুক্তি",
+                "cq": 0,
+                "mcq": 23,
+                "prac": 24,
+                "total": 47,
+                "isOptional": false
+            },
+            {
+                "name": "কৃষি শিক্ষা",
+                "cq": 41,
+                "mcq": 22,
+                "prac": 23,
+                "total": 86,
+                "isOptional": true
+            }
+        ]
+    },
+    "10_sci_3": {
+        "name": "সুমাইয়া আক্তার",
+        "pin": "3816",
+        "merit": "3",
+        "totalMarks": "651",
+        "verifyId": "PCHS-2026-10S03-7X9B",
+        "subjects": [
+            {
+                "name": "বাংলা (১ম ও ২য় পত্র)",
+                "cq": 55,
+                "mcq": 18,
+                "prac": 0,
+                "total": 73,
+                "isOptional": false
+            },
+            {
+                "name": "ইংরেজি (১ম ও ২য় পত্র)",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 60,
+                "isOptional": false
+            },
+            {
+                "name": "গণিত",
+                "cq": 42,
+                "mcq": 15,
+                "prac": 0,
+                "total": 57,
+                "isOptional": false
+            },
+            {
+                "name": "ইসলাম ও নৈতিক শিক্ষা",
+                "cq": 50,
+                "mcq": 18,
+                "prac": 0,
+                "total": 68,
+                "isOptional": false
+            },
+            {
+                "name": "পদার্থবিজ্ঞান",
+                "cq": 35,
+                "mcq": 14,
+                "prac": 20,
+                "total": 69,
+                "isOptional": false
+            },
+            {
+                "name": "রসায়ন",
+                "cq": 38,
+                "mcq": 15,
+                "prac": 21,
+                "total": 74,
+                "isOptional": false
+            },
+            {
+                "name": "জীববিজ্ঞান",
+                "cq": 40,
+                "mcq": 16,
+                "prac": 22,
+                "total": 78,
+                "isOptional": false
+            },
+            {
+                "name": "বাংলাদেশ ও বিশ্বপরিচয়",
+                "cq": 48,
+                "mcq": 17,
+                "prac": 0,
+                "total": 65,
+                "isOptional": false
+            },
+            {
+                "name": "তথ্য ও যোগাযোগ প্রযুক্তি",
+                "cq": 0,
+                "mcq": 18,
+                "prac": 20,
+                "total": 38,
+                "isOptional": false
+            },
+            {
+                "name": "উচ্চতর গণিত",
+                "cq": 35,
+                "mcq": 14,
+                "prac": 20,
+                "total": 69,
+                "isOptional": true
+            }
+        ]
+    }
+}
