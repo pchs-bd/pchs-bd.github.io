@@ -1,25 +1,146 @@
 {
+    "10_sci_Roll": {
+        "name": "Name",
+        "pin": "PIN",
+        "merit": "Merit",
+        "totalMarks": "Total_Marks",
+        "verifyId": "PCHS-2026-10SRoll-7X9B",
+        "subjects": [
+            {
+                "name": "বাংলা ১ম পত্র",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": false
+            },
+            {
+                "name": "বাংলা ২য় পত্র",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": false
+            },
+            {
+                "name": "ইংরেজি ১ম পত্র",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": false
+            },
+            {
+                "name": "ইংরেজি ২য় পত্র",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": false
+            },
+            {
+                "name": "গণিত",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": false
+            },
+            {
+                "name": "Religion_Subject",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": false
+            },
+            {
+                "name": "পদার্থবিজ্ঞান",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": false
+            },
+            {
+                "name": "রসায়ন",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": false
+            },
+            {
+                "name": "জীববিজ্ঞান",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": false
+            },
+            {
+                "name": "বাংলাদেশ ও বিশ্বপরিচয়",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": false
+            },
+            {
+                "name": "তথ্য ও যোগাযোগ প্রযুক্তি",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": false
+            },
+            {
+                "name": "Optional_Subject",
+                "cq": 0,
+                "mcq": 0,
+                "prac": 0,
+                "total": 0,
+                "isOptional": true
+            }
+        ]
+    },
     "10_sci_1": {
-        "name": "শিবজয় দাস ইমন",
+        "name": "আসিফ রহমান",
         "pin": "3502",
         "merit": "2",
         "totalMarks": "796",
         "verifyId": "PCHS-2026-10S01-7X9B",
         "subjects": [
             {
-                "name": "বাংলা (১ম ও ২য় পত্র)",
-                "cq": 65,
-                "mcq": 22,
+                "name": "বাংলা ১ম পত্র",
+                "cq": 35,
+                "mcq": 12,
                 "prac": 0,
-                "total": 87,
+                "total": 47,
                 "isOptional": false
             },
             {
-                "name": "ইংরেজি (১ম ও ২য় পত্র)",
-                "cq": 0,
+                "name": "বাংলা ২য় পত্র",
+                "cq": 30,
+                "mcq": 10,
+                "prac": 0,
+                "total": 40,
+                "isOptional": false
+            },
+            {
+                "name": "ইংরেজি ১ম পত্র",
+                "cq": 40,
                 "mcq": 0,
                 "prac": 0,
-                "total": 75,
+                "total": 40,
+                "isOptional": false
+            },
+            {
+                "name": "ইংরেজি ২য় পত্র",
+                "cq": 35,
+                "mcq": 0,
+                "prac": 0,
+                "total": 35,
                 "isOptional": false
             },
             {
@@ -89,26 +210,42 @@
         ]
     },
     "10_sci_2": {
-        "name": "ছামিয়া আক্তার",
+        "name": "সুমাইয়া আক্তার",
         "pin": "3659",
         "merit": "1",
         "totalMarks": "859",
         "verifyId": "PCHS-2026-10S02-7X9B",
         "subjects": [
             {
-                "name": "বাংলা (১ম ও ২য় পত্র)",
-                "cq": 72,
-                "mcq": 24,
+                "name": "বাংলা ১ম পত্র",
+                "cq": 38,
+                "mcq": 13,
                 "prac": 0,
-                "total": 96,
+                "total": 51,
                 "isOptional": false
             },
             {
-                "name": "ইংরেজি (১ম ও ২য় পত্র)",
-                "cq": 0,
+                "name": "বাংলা ২য় পত্র",
+                "cq": 34,
+                "mcq": 11,
+                "prac": 0,
+                "total": 45,
+                "isOptional": false
+            },
+            {
+                "name": "ইংরেজি ১ম পত্র",
+                "cq": 42,
                 "mcq": 0,
                 "prac": 0,
-                "total": 82,
+                "total": 42,
+                "isOptional": false
+            },
+            {
+                "name": "ইংরেজি ২য় পত্র",
+                "cq": 40,
+                "mcq": 0,
+                "prac": 0,
+                "total": 40,
                 "isOptional": false
             },
             {
@@ -120,7 +257,7 @@
                 "isOptional": false
             },
             {
-                "name": "ইসলাম ও নৈতিক শিক্ষা",
+                "name": "হিন্দুধর্ম ও নৈতিক শিক্ষা",
                 "cq": 68,
                 "mcq": 25,
                 "prac": 0,
@@ -178,26 +315,42 @@
         ]
     },
     "10_sci_3": {
-        "name": "সুমাইয়া আক্তার",
+        "name": "তানভীর আহমেদ",
         "pin": "3816",
         "merit": "3",
         "totalMarks": "651",
         "verifyId": "PCHS-2026-10S03-7X9B",
         "subjects": [
             {
-                "name": "বাংলা (১ম ও ২য় পত্র)",
-                "cq": 55,
-                "mcq": 18,
+                "name": "বাংলা ১ম পত্র",
+                "cq": 28,
+                "mcq": 10,
                 "prac": 0,
-                "total": 73,
+                "total": 38,
                 "isOptional": false
             },
             {
-                "name": "ইংরেজি (১ম ও ২য় পত্র)",
-                "cq": 0,
+                "name": "বাংলা ২য় পত্র",
+                "cq": 27,
+                "mcq": 8,
+                "prac": 0,
+                "total": 35,
+                "isOptional": false
+            },
+            {
+                "name": "ইংরেজি ১ম পত্র",
+                "cq": 32,
                 "mcq": 0,
                 "prac": 0,
-                "total": 60,
+                "total": 32,
+                "isOptional": false
+            },
+            {
+                "name": "ইংরেজি ২য় পত্র",
+                "cq": 28,
+                "mcq": 0,
+                "prac": 0,
+                "total": 28,
                 "isOptional": false
             },
             {
