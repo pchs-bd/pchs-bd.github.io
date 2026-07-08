@@ -1,7 +1,468 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ফলাফল পোর্টাল | পূর্ণাছগাম উচ্চ বিদ্যালয়</title>
+    <link rel="icon" href="logo.png" type="image/png"/>
+    <style>
+        /* --- বেসিক ও রিসেট স্টাইল --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            padding: 15px;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        /* 🔍 সার্চ বক্সের ডিজাইন */
+        .result-search-box {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            max-width: 850px;
+            margin: 10px auto 20px auto;
+            border-top: 5px solid #1e5631;
+        }
+        .result-search-box h2 { color: #1e5631; font-size: 22px; margin-bottom: 8px; text-align: center; }
+        .result-search-box p { font-size: 14px; color: #666; text-align: center; margin-bottom: 20px; }
+        .search-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+        .input-group label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 6px; color: #444; }
+        .input-group select, .input-group input {
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; outline: none; background-color: #fff;
+        }
+        .input-group select:focus, .input-group input:focus { border-color: #1e5631; box-shadow: 0 0 5px rgba(30, 86, 49, 0.2); }
+        .btn-search {
+            background: #1e5631; color: white; border: none; padding: 14px 25px; border-radius: 6px; cursor: pointer;
+            font-weight: bold; margin-top: 20px; width: 100%; font-size: 16px; transition: 0.3s;
+        }
+        .btn-search:hover { background: #153e22; }
+        .section-divider { max-width: 850px; margin: 25px auto; border: 0; border-top: 1px dashed #ccc; }
+
+        /* 🏛️ অফিশিয়াল প্যাড ও মার্কশীটের ডিজাইন */
+        .official-marksheet {
+    display: none; 
+    background: #fff; 
+    padding: 40px; 
+    max-width: 850px; 
+    margin: 0 auto 30px auto;
+    border: 5px double #1e5631; 
+    position: relative; 
+    box-shadow: 0 4px 25px rgba(0,0,0,0.05);
+}
+
+       .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    height: auto;
+    opacity: 0.06; 
+    pointer-events: none;
+    z-index: 0;
+}
+        
+        /* প্রফেশনাল প্যাড হেডার */
+        .pad-header-official { 
+            border: 2px solid #1e5631; 
+            padding: 20px; 
+            margin-bottom: 25px; 
+            background: #fafdfb; 
+            position: relative;
+            border-radius: 6px;
+        }
+        .pad-top-row { display: flex; justify-content: flex-end; font-size: 12px; color: #444; border-bottom: 1px solid #e0e0e0; padding-bottom: 6px; margin-bottom: 15px; }
+        .pad-main-content { display: flex; align-items: center; justify-content: flex-start; gap: 25px; }
+        
+        /* লোগো সাইজ অপ্টিমাইজেশন */
+        .school-logo-area img { width: 95px; height: 95px; object-fit: contain; display: block; }
+        
+        .school-title-official { flex-grow: 1; text-align: left; }
+        .school-title-official h1 { font-size: 28px; color: #1e5631; margin: 0; font-weight: bold; letter-spacing: 0.5px; }
+        .school-title-official h2 { font-size: 19px; color: #2c3e50; margin: 3px 0 6px 0; font-weight: 600; letter-spacing: 0.3px; }
+        .school-title-official p { font-size: 13px; margin: 2px 0; color: #555; }
+        .pad-meta { font-weight: bold; color: #1e5631 !important; }
+        .text-center { text-align: center; }
+       .exam-tag { 
+    background: none !important; 
+    color: #c0392b !important;   /* গাঢ় লাল/কমলা টেক্সট কালার, যা সাদা কাগজে স্পষ্ট ফুটবে */
+    border: 1.5px solid #c0392b !important; /* বর্ডার দেওয়া হলো, যা গ্রাফিক্স অফ থাকলেও ১০০% প্রিন্ট হবে */
+    font-weight: bold !important;
+    font-size: 14px !important;
+    padding: 5px 16px !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
+}
+
+        /* 📋 মডার্ন স্টুডেন্ট ইনফো কার্ড */
+        .student-info-table { 
+            margin-bottom: 25px; 
+            background: #ffffff; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border: 1px solid #e2e8f0;
+            border-left: 6px solid #1e5631; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .student-info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 25px; }
+        .info-item { font-size: 14px; color: #4a5568; display: flex; justify-content: space-between; border-bottom: 1px dashed #edf2f7; padding-bottom: 5px; }
+        .info-item strong { color: #2d3748; }
+        .info-item span { font-weight: 600; color: #1a202c; }
+        
+        /* ব্যাজ ডিজাইন */
+      
+.gpa-badge { 
+    background: none !important; 
+    color: #1e5631; 
+    font-weight: bold; 
+    font-size: 15px; 
+    padding: 0;
+}
+.merit-badge { 
+    background: none !important; 
+    border: none !important; 
+    color: #d35400; 
+    font-weight: bold; 
+    font-size: 15px; 
+    padding: 0;
+}
+
+        /* টেবিল ডিজাইন */
+        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 25px; }
+        .marksheet-table { width: 100%; border-collapse: collapse; min-width: 650px; }
+        .marksheet-table th, .marksheet-table td { border: 1px solid #cbd5e0; padding: 10px; text-align: center; font-size: 14px; }
+        .marksheet-table th { background: #f7fafc; color: #1e5631; font-weight: bold; }
+        .marksheet-table tr:nth-child(even) { background-color: #fcfdfc; }
+
+        /* 🔐 ফুটার ভেরিফিকেশন ও লাইভ QR এরিয়া */
+        .pad-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+        
+        .verification-container { display: flex; align-items: center; gap: 15px; background: #fafafa; padding: 10px 15px; border-radius: 6px; border: 1px solid #e2e8f0; }
+        .verification-box { font-size: 12px; color: #4a5568; }
+        .verification-box p { margin-bottom: 3px; }
+        .verification-box strong { font-family: monospace; font-size: 13px; color: #1a202c; letter-spacing: 0.5px; }
+        .qr-code-img { width: 70px; height: 70px; border: 1px solid #cbd5e0; padding: 2px; background: #fff; border-radius: 4px; }
+        
+        .signature-box { text-align: center; font-size: 14px; position: relative; width: 220px; }
+        .signature-img { width: 110px; height: auto; display: block; margin: 0 auto -5px auto; }
+        .sign-line { border-top: 1px solid #718096; width: 100%; margin-bottom: 6px; }
+        .signature-box p { color: #4a5568; font-size: 13px; line-height: 1.4; }
+        
+        .btn-print { background: #e67e22; color: white; border: none; padding: 14px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 20px; display: block; width: 100%; font-size: 16px; transition: 0.3s; }
+        .btn-print:hover { background: #d35400; }
+
+        /* 📱 মোবাইল রেসপনসিভ মিডিয়া কোয়েরি */
+        @media screen and (max-width: 650px) {
+            body { padding: 8px; }
+            .result-search-box { padding: 15px; }
+            .official-marksheet { padding: 20px 15px; }
+            .pad-main-content { flex-direction: column; text-align: center; }
+            .school-title-official { text-align: center; }
+            .school-logo-area img { margin: 0 auto 5px auto; }
+            .student-info-grid { grid-template-columns: 1fr; gap: 10px; }
+            .pad-footer { flex-direction: column-reverse; align-items: center; gap: 30px; text-align: center; }
+            .verification-container { width: 100%; justify-content: center; }
+        }
+
+        /* 🎯 🖨️ প্রিন্ট লেআউট ফিক্স (A4 পেজে নিখুঁত ফিটিং) */
+       @media print {
+    @page {
+        size: A4 portrait;
+        margin: 8mm 12mm 8mm 12mm; /* মার্জিন সামান্য কমিয়ে স্পেস বাড়ানো হয়েছে */
+    }
+    body { background: white; padding: 0; margin: 0; }
+    .result-search-box, .btn-print, .section-divider { display: none !important; }
+    
+     .official-marksheet {
+        display: block !important; 
+        border: 5px double #6f0ba9 !important; 
+        box-shadow: none !important;
+        padding: 15px !important; 
+        margin: 0 !important; 
+        width: 100% !important; 
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .table-responsive { overflow: visible !important; width: 100% !important; }
+    .marksheet-table { min-width: 100% !important; width: 100% !important; table-layout: auto; }
+    
+    /* ১ পেজে ডেটা নামিয়ে আনার জন্য ভার্টিক্যাল স্পেসিং ও ফন্ট সাইজ অপ্টিমাইজেশন */
+    .school-title-official h1 { font-size: 23px !important; }
+    .school-title-official h2 { font-size: 16px !important; }
+    .school-logo-area img { width: 80px !important; height: 80px !important; }
+    
+    .pad-header-official { padding: 10px !important; margin-bottom: 12px !important; }
+    .student-info-table { padding: 10px 12px !important; margin-bottom: 12px !important; }
+    .student-info-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 6px 20px !important; }
+    
+    .marksheet-table th, .marksheet-table td { padding: 6px 4px !important; font-size: 13px !important; }
+    .pad-footer { margin-top: 15px !important; padding-top: 10px !important; }
+    .signature-img { width: 95px !important; }
+      .exam-tag { 
+        background: none !important; 
+        color: #c0392b !important; 
+        border: 1.5px solid #c0392b !important;
+    }
+}
+    </style>
+</head>
 <body>
-<h1> Coming soon...
-</h1>
+
+    <div class="result-search-box">
+        <h2>...:: পূর্ণাছগাম উচ্চ বিদ্যালয় - ফলাফল পোর্টাল ::...</h2>
+        <p>সঠিক রোল এবং পিন নম্বর প্রদান করে ফলাফল চেক করুন</p>
+        
+        <div class="search-grid">
+            <div class="input-group">
+                <label>শ্রেণী সিলেক্ট করুন</label>
+                <select id="classSelect"><option value="10">১০ম শ্রেণী</option></select>
+            </div>
+            <div class="input-group">
+                <label>বিভাগ</label>
+                <select id="groupSelect"><option value="sci">বিজ্ঞান (Science)</option></select>
+            </div>
+            <div class="input-group">
+                <label>পরীক্ষার ধরন</label>
+                <select id="examSelect"><option value="pretest">প্রাক-নির্বাচনী পরীক্ষা (Pre-Test)</option></select>
+            </div>
+            <div class="input-group">
+                <label>রোল নম্বর</label>
+                <input type="number" id="rollInput" placeholder="উদা: 3" min="1">
+            </div>
+            <div class="input-group">
+                <label>গোপন পিন (PIN)</label>
+                <input type="password" id="pinInput" placeholder="৪ ডিজিটের পিন দিন">
+            </div>
+        </div>
+        <button class="btn-search" onclick="checkResult()">ফলাফল দেখুন 🔍</button>
+    </div>
+
+    <hr class="section-divider">
+
+    <div id="printArea" class="official-marksheet">
+       <img src="logo.png" alt="Watermark" class="watermark">
+        
+        <div class="pad-header-official">
+            <div class="pad-top-row">
+                <span><strong>EIIN:</strong> 130231</span>
+            </div>
+            <div class="pad-main-content">
+                <div class="school-logo-area">
+                    <img src="logo.png" alt="School Logo"> 
+                </div>
+                <div class="school-title-official">
+                    <h1>পূর্ণাছগাম উচ্চ বিদ্যালয়</h1>
+                    <h2>PURNACHOGUM HIGH SCHOOL</h2>
+                    <p>ডাকঘর: খাগাইল বাজার-৩১০০, উপজেলা: কোম্পানীগঞ্জ, জেলা: সিলেট।</p>
+                    <p class="pad-meta">স্থাপিত: ১৯৯৬ খ্রি: | Email: purnachogum@gmail.com</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <span class="exam-tag">প্রাক-নির্বাচনী পরীক্ষা - ২০২৬ এর ফলাফল</span>
+            </div>
+        </div>
+
+        <div class="student-info-table">
+            <div class="student-info-grid">
+                <div class="info-item"><strong>শিক্ষার্থীর নাম:</strong> <span id="resName">-</span></div>
+                <div class="info-item"><strong>শ্রেণী:</strong> <span id="resClass">-</span></div>
+                <div class="info-item"><strong>বিভাগ:</strong> <span id="resGroup">-</span></div>
+                <div class="info-item"><strong>রোল নম্বর:</strong> <span id="resRoll">-</span></div>
+                <div class="info-item"><strong>মেধা স্থান:</strong> <span><span id="resPosition" class="merit-badge">-</span></span></div>
+                <div class="info-item"><strong>প্রাপ্ত মোট নম্বর:</strong> <span id="resTotal">-</span></div>
+                <div class="info-item"><strong>চূড়ান্ত জিপিএ (GPA):</strong> <span><span id="resGPA" class="gpa-badge">-</span></span></div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="marksheet-table">
+                <thead>
+                    <tr>
+                        <th>বিষয়ের নাম</th>
+                        <th>সৃজনশীল </th>
+                        <th>বহুনির্বাচনী</th>
+                        <th>ব্যবহারিক</th>
+                        <th>মোট নম্বর</th>
+                        <th>লেটার গ্রেড</th>
+                        <th>গ্রেড পয়েন্ট</th>
+                    </tr>
+                </thead>
+                <tbody id="marksTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="pad-footer">
+            <div class="verification-container">
+                <div class="verification-box">
+                    <p>অনলাইন ভেরিফিকেশন আইডি:</p>
+                    <strong id="verifyID">-</strong>
+                </div>
+                <img id="qrCode" src="" alt="QR Code" class="qr-code-img">
+            </div>
+            
+            <div class="signature-box">
+                <img src="signature.png" alt="Signature" class="signature-img" onerror="this.style.display='none'">
+                <div class="sign-line"></div>
+                <p><strong>শাহেদ আহমদ</strong></p>
+                <p>প্রধান শিক্ষক (ভারপ্রাপ্ত)</p>
+                <p>পূর্ণাছগাম উচ্চ বিদ্যালয়, কোম্পানীগঞ্জ</p>
+            </div>
+        </div>
+        
+        <button class="btn-print" onclick="window.print()">ফলাফল প্রিন্ট করুন (Print Marksheet) 🖨️</button>
+    </div>
+
+   <script>
+   function getGradeAndPoint(score, subjectName) {
+        let finalScore = score;
+        if (subjectName.includes("তথ্য ও যোগাযোগ")) { finalScore = score * 2; }
+
+        if (finalScore >= 80) return { grade: "A+", point: 5.0 };
+        if (finalScore >= 70) return { grade: "A",  point: 4.0 };
+        if (finalScore >= 60) return { grade: "A-", point: 3.5 };
+        if (finalScore >= 50) return { grade: "B",  point: 3.0 };
+        if (finalScore >= 40) return { grade: "C",  point: 2.0 };
+        if (finalScore >= 33) return { grade: "D",  point: 1.0 };
+        return { grade: "F", point: 0.0 };
+    }
+
+    async function checkResult() { 
+        const classVal = document.getElementById('classSelect').value;
+        const groupVal = document.getElementById('groupSelect').value;
+        const rollVal = parseInt(document.getElementById('rollInput').value);
+        const pinVal = document.getElementById('pinInput').value;
+        const printArea = document.getElementById('printArea');
+
+        if (!rollVal || !pinVal) {
+            alert("দয়া করে রোল নম্বর এবং ৪ ডিজিটের গোপন পিন সঠিকভাবে দিন।");
+            return;
+        }
+
+        // ⚠️ এখানে আপনার গিটহাব থেকে কপি করা RAW লিংকটি বসাবেন
+        const rawJsonUrl = "https://raw.githubusercontent.com/pchs-bd/pchs-bd.github.io/refs/heads/main/result.json";
+
+        try {
+            // গিটহাব থেকে সরাসরি লাইভ ডেটা ফেচ করা হচ্ছে
+            const response = await fetch(rawJsonUrl);
+            const resultsDatabase = await response.json();
+
+            // ইনপুট অনুযায়ী কী (Key) তৈরি এবং স্টুডেন্ট খোঁজা
+            const searchKey = `${classVal}_${groupVal}_${rollVal}`;
+            const studentData = resultsDatabase[searchKey];
+
+            if (!studentData || studentData.pin !== pinVal) {
+                alert("দুঃখিত! রোল নম্বর অথবা গোপন পিন নম্বরটি সঠিক নয়।");
+                printArea.style.display = 'none';
+                return;
+            }
+
+            // ভেরিফিকেশন আইডি pchs- স্মল লেটারে রূপান্তর
+            const formattedVerifyId = studentData.verifyId.toLowerCase();
+
+            document.getElementById('resName').innerText = studentData.name;
+            document.getElementById('resClass').innerText = classVal === '10' ? '১০ম' : classVal + "ম";
+            document.getElementById('resGroup').innerText = groupVal === 'sci' ? 'বিজ্ঞান' : 'অন্যান্য';
+            document.getElementById('resRoll').innerText = rollVal < 10 ? '০' + rollVal : rollVal;
+            document.getElementById('resPosition').innerText = studentData.merit;
+            document.getElementById('verifyID').innerText = formattedVerifyId;
+            
+            // লাইভ QR কোড জেনারেটর এপিআই লিংক যুক্তকরণ
+            document.getElementById('qrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=${encodeURIComponent(formattedVerifyId)}`;
+
+            let totalMarks = 0;
+            let mainSubjectsPoints = 0;
+            let optionalSubjectPoints = 0;
+            let isFailed = false;
+            let tableHtml = "";
+
+            studentData.subjects.forEach(sub => {
+                totalMarks += sub.total;
+                let result = getGradeAndPoint(sub.total, sub.name);
+                let isPartFailed = false;
+
+                // পাস-ফেল এবং প্র্যাক্টিকাল বিষয়ের ডায়নামিক চেকিং (উচ্চতর গণিত, কৃষি শিক্ষা উভয় ক্ষেত্রে কার্যকর)
+                if (sub.name.includes("ইংরেজি")) {
+                    if (sub.total < 33) isPartFailed = true;
+                } else if (sub.name.includes("বাংলা") || sub.name.includes("গণিত") || sub.name.includes("বিশ্বপরিচয়") || sub.name.includes("শিক্ষা")) {
+                    if (sub.cq < 23 || sub.mcq < 10 || sub.total < 33) isPartFailed = true;
+                } else if (sub.name.includes("পদার্থ") || sub.name.includes("রসায়ন") || sub.name.includes("জীববিজ্ঞান") || sub.isOptional) {
+                    // বিজ্ঞান বিষয়ের প্র্যাক্টিকাল যুক্ত সাবজেক্ট অথবা যেকোনো ৪র্থ বিষয় (উচ্চতর গণিত/কৃষি)
+                    if (sub.cq < 17 || sub.mcq < 8 || sub.prac < 8 || sub.total < 33) isPartFailed = true;
+                } else if (sub.name.includes("তথ্য ও যোগাযোগ")) {
+                    if (sub.mcq < 8 || sub.prac < 8 || sub.total < 17) isPartFailed = true;
+                }
+
+                if (isPartFailed) {
+                    result.grade = "F";
+                    result.point = 0.0;
+                    isFailed = true;
+                }
+
+                let cqShow = sub.cq === 0 && sub.mcq === 0 ? "-" : sub.cq;
+                let mcqShow = sub.mcq === 0 ? "-" : sub.mcq;
+                let pracShow = sub.prac === 0 ? "-" : sub.prac;
+                let optText = sub.isOptional ? " (৪র্থ বিষয়)" : "";
+
+                tableHtml += `<tr>
+                    <td style="text-align: left; padding-left: 15px;">${sub.name}${optText}</td>
+                    <td>${cqShow}</td><td>${mcqShow}</td><td>${pracShow}</td>
+                    <td><strong>${sub.total}</strong></td>
+                    <td style="font-weight:bold; color:${result.grade==='F'?'red':'black'}">${result.grade}</td>
+                    <td>${result.point.toFixed(2)}</td>
+                </tr>`;
+
+                if (sub.isOptional) {
+                    optionalSubjectPoints = Math.max(0, result.point - 2);
+                } else {
+                    mainSubjectsPoints += result.point;
+                }
+            });
+
+            document.getElementById('marksTableBody').innerHTML = tableHtml;
+            document.getElementById('resTotal').innerText = totalMarks;
+
+            if (isFailed) {
+                document.getElementById('resGPA').innerText = "0.00 (F)";
+                document.getElementById('resGPA').style.color = "#c0392b"; // শুধু টেক্সট কালার লাল হবে
+                document.getElementById('resGPA').style.background = "none";
+            } else {
+                let finalGPA = (mainSubjectsPoints + optionalSubjectPoints) / 9;
+                if (finalGPA > 5) finalGPA = 5.00;
+                
+                let finalLetter = "F";
+                if (finalGPA === 5.00) finalLetter = "A+";
+                else if (finalGPA >= 4.00) finalLetter = "A";
+                else if (finalGPA >= 3.50) finalLetter = "A-";
+                else if (finalGPA >= 3.00) finalLetter = "B";
+                else if (finalGPA >= 2.00) finalLetter = "C";
+                else if (finalGPA >= 1.00) finalLetter = "D";
+
+                document.getElementById('resGPA').innerText = `${finalGPA.toFixed(2)} (${finalLetter})`;
+                document.getElementById('resGPA').style.color = "#1e5631"; // শুধু টেক্সট কালার সবুজ হবে
+                document.getElementById('resGPA').style.background = "none";
+            }
+            printArea.style.display = 'block';
+            printArea.scrollIntoView({ behavior: 'smooth' });
+
+        } catch (error) {
+            // 🎯 এই ক্যাচ ব্লকটি আপনার কোডে মিসিং ছিল, যা আমি এখানে যুক্ত করে দিয়েছি
+            console.error("ডেটা লোড করতে সমস্যা হয়েছে:", error);
+            alert("সার্ভার থেকে রেজাল্ট লোড করা যাচ্ছে না। আবার চেষ্টা করুন।");
+        }
+    } // 👈 checkResult ফাংশনটি এখানে সফলভাবে শেষ হলো
+
+    // প্রটেকশন সিকিউরিটি শর্টকাট লক
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) return false;
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+    }
+</script>
 </body>
 </html>
