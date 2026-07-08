@@ -213,7 +213,7 @@
         "name": "সুমাইয়া আক্তার",
         "pin": "3659",
         "merit": "1",
-        "totalMarks": "859",
+        "totalMarks": "857",
         "verifyId": "PCHS-2026-10S02-7X9B",
         "subjects": [
             {
@@ -227,7 +227,7 @@
             {
                 "name": "বাংলা ২য় পত্র",
                 "cq": 34,
-                "mcq": 11,
+                "mcq": 09,
                 "prac": 0,
                 "total": 45,
                 "isOptional": false
