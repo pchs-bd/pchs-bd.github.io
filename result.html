@@ -372,35 +372,89 @@
             // লাইভ QR কোড জেনারেটর এপিআই লিংক যুক্তকরণ
             document.getElementById('qrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=${encodeURIComponent(formattedVerifyId)}`;
 
-            let totalMarks = 0;
+                        let totalMarks = 0;
             let mainSubjectsPoints = 0;
             let optionalSubjectPoints = 0;
             let isFailed = false;
             let tableHtml = "";
 
+            // 🇧🇩 বাংলা ও ইংরেজির কম্বাইন্ড হিসাবের জন্য অগ্রিম ভেরিয়েবল
+            let banglaCQ = 0, banglaMCQ = 0, banglaTotal = 0;
+            let englishTotal = 0;
+
+            // প্রথমে একটি লুপ চালিয়ে বাংলা ও ইংরেজির দুই পত্রের নম্বর একত্র করা
+            studentData.subjects.forEach(sub => {
+                if (sub.name.includes("বাংলা")) {
+                    banglaCQ += sub.cq || 0;
+                    banglaMCQ += sub.mcq || 0;
+                    banglaTotal += sub.total || 0;
+                }
+                if (sub.name.includes("ইংরেজি")) {
+                    englishTotal += sub.total || 0;
+                }
+            });
+
+            // বোর্ড নিয়মে কম্বাইন্ড পাস-ফেল ও গ্রেড পয়েন্ট নির্ধারণ (গড় করে ১০০ তে রূপান্তর)
+            let banglaFail = (banglaCQ < 46 || banglaMCQ < 20 || banglaTotal < 66);
+            let englishFail = (englishTotal < 66);
+
+            let banglaResult = banglaFail ? { grade: "F", point: 0.0 } : getGradeAndPoint(banglaTotal / 2, "বাংলা");
+            let englishResult = englishFail ? { grade: "F", point: 0.0 } : getGradeAndPoint(englishTotal / 2, "ইংরেজি");
+
+            // পয়েন্ট যেন দুইবার যোগ না হয় তার জন্য ফ্ল্যাগ ফ্লিপার
+            let banglaAdded = false;
+            let englishAdded = false;
+
+            // মূল লুপ: টেবিল রো তৈরি এবং বাকি সব বিষয়ের জিপিএ হিসাব
             studentData.subjects.forEach(sub => {
                 totalMarks += sub.total;
-                let result = getGradeAndPoint(sub.total, sub.name);
+                let result = { grade: "", point: 0.0 };
                 let isPartFailed = false;
 
-                // পাস-ফেল এবং প্র্যাক্টিকাল বিষয়ের ডায়নামিক চেকিং (উচ্চতর গণিত, কৃষি শিক্ষা উভয় ক্ষেত্রে কার্যকর)
-                if (sub.name.includes("ইংরেজি")) {
-                    if (sub.total < 33) isPartFailed = true;
-                } else if (sub.name.includes("বাংলা") || sub.name.includes("গণিত") || sub.name.includes("বিশ্বপরিচয়") || sub.name.includes("শিক্ষা")) {
-                    if (sub.cq < 23 || sub.mcq < 10 || sub.total < 33) isPartFailed = true;
-                } else if (sub.name.includes("পদার্থ") || sub.name.includes("রসায়ন") || sub.name.includes("জীববিজ্ঞান") || sub.isOptional) {
-                    // বিজ্ঞান বিষয়ের প্র্যাক্টিকাল যুক্ত সাবজেক্ট অথবা যেকোনো ৪র্থ বিষয় (উচ্চতর গণিত/কৃষি)
-                    if (sub.cq < 17 || sub.mcq < 8 || sub.prac < 8 || sub.total < 33) isPartFailed = true;
-                } else if (sub.name.includes("তথ্য ও যোগাযোগ")) {
-                    if (sub.mcq < 8 || sub.prac < 8 || sub.total < 17) isPartFailed = true;
+                if (sub.name.includes("বাংলা")) {
+                    result = { ...banglaResult };
+                    if (banglaFail) isPartFailed = true;
+                    
+                    if (!banglaAdded) {
+                        mainSubjectsPoints += banglaResult.point;
+                        if (banglaFail) isFailed = true;
+                        banglaAdded = true;
+                    }
+                } else if (sub.name.includes("ইংরেজি")) {
+                    result = { ...englishResult };
+                    if (englishFail) isPartFailed = true;
+
+                    if (!englishAdded) {
+                        mainSubjectsPoints += englishResult.point;
+                        if (englishFail) isFailed = true;
+                        englishAdded = true;
+                    }
+                } else {
+                    // ধর্ম (ডায়নামিক) এবং বাকি বিষয়ের রেগুলার ক্যালকুলেশন
+                    result = getGradeAndPoint(sub.total, sub.name);
+
+                    if (sub.name.includes("গণিত") || sub.name.includes("বিশ্বপরিচয়") || sub.name.includes("শিক্ষা") || sub.name.includes("ধর্ম")) {
+                        if (sub.cq < 23 || sub.mcq < 10 || sub.total < 33) isPartFailed = true;
+                    } else if (sub.name.includes("পদার্থ") || sub.name.includes("রসায়ন") || sub.name.includes("জীববিজ্ঞান") || sub.isOptional) {
+                        if (sub.cq < 17 || sub.mcq < 8 || sub.prac < 8 || sub.total < 33) isPartFailed = true;
+                    } else if (sub.name.includes("তথ্য ও যোগাযোগ")) {
+                        if (sub.mcq < 8 || sub.prac < 8 || sub.total < 17) isPartFailed = true;
+                    }
+
+                    if (isPartFailed) {
+                        result.grade = "F";
+                        result.point = 0.0;
+                        isFailed = true;
+                    }
+
+                    if (sub.isOptional) {
+                        optionalSubjectPoints = Math.max(0, result.point - 2);
+                    } else {
+                        mainSubjectsPoints += result.point;
+                    }
                 }
 
-                if (isPartFailed) {
-                    result.grade = "F";
-                    result.point = 0.0;
-                    isFailed = true;
-                }
-
+                // ড্যাশবোর্ড টেবিলে ডাটা সাজানো
                 let cqShow = sub.cq === 0 && sub.mcq === 0 ? "-" : sub.cq;
                 let mcqShow = sub.mcq === 0 ? "-" : sub.mcq;
                 let pracShow = sub.prac === 0 ? "-" : sub.prac;
@@ -413,25 +467,20 @@
                     <td style="font-weight:bold; color:${result.grade==='F'?'red':'black'}">${result.grade}</td>
                     <td>${result.point.toFixed(2)}</td>
                 </tr>`;
-
-                if (sub.isOptional) {
-                    optionalSubjectPoints = Math.max(0, result.point - 2);
-                } else {
-                    mainSubjectsPoints += result.point;
-                }
             });
 
             document.getElementById('marksTableBody').innerHTML = tableHtml;
             document.getElementById('resTotal').innerText = totalMarks;
 
+            // চূড়ান্ত রেজাল্ট ও টোটাল জিপিএ কার্ডে পুশ করা
             if (isFailed) {
                 document.getElementById('resGPA').innerText = "0.00 (F)";
-                document.getElementById('resGPA').style.color = "#c0392b"; // শুধু টেক্সট কালার লাল হবে
+                document.getElementById('resGPA').style.color = "#c0392b";
                 document.getElementById('resGPA').style.background = "none";
             } else {
                 let finalGPA = (mainSubjectsPoints + optionalSubjectPoints) / 9;
                 if (finalGPA > 5) finalGPA = 5.00;
-                
+
                 let finalLetter = "F";
                 if (finalGPA === 5.00) finalLetter = "A+";
                 else if (finalGPA >= 4.00) finalLetter = "A";
@@ -441,9 +490,10 @@
                 else if (finalGPA >= 1.00) finalLetter = "D";
 
                 document.getElementById('resGPA').innerText = `${finalGPA.toFixed(2)} (${finalLetter})`;
-                document.getElementById('resGPA').style.color = "#1e5631"; // শুধু টেক্সট কালার সবুজ হবে
+                document.getElementById('resGPA').style.color = "#1e5631";
                 document.getElementById('resGPA').style.background = "none";
             }
+
             printArea.style.display = 'block';
             printArea.scrollIntoView({ behavior: 'smooth' });
 
