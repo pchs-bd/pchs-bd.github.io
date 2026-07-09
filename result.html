@@ -401,24 +401,34 @@
                 }
             });
 
-            // ২. বাংলা কম্বাইন্ড পাস-ফেল ও গ্রেড হিসাব (২০০ নম্বরের উপর ভিত্তি করে)
+         / ২. বাংলা পাস-ফেল ও গ্রেড হিসাব (২০০ নম্বরের উপর ভিত্তি করে)
             let banglaTotal = b1.total + b2.total;
-            let banglaCQ = (parseInt(b1.cq)||0) + (parseInt(b2.cq)||0);
-            let banglaMCQ = (parseInt(b1.mcq)||0) + (parseInt(b2.mcq)||0);
+
+            // বাংলা ১ম পত্রের যেকোনো অংশে (CQ: ২৩, MCQ: ১০, মোট: ৩৩) এর কম পেলে ফেল
+            let b1_Fail = (b1.cq !== "-" && parseInt(b1.cq) < 23) || 
+                          (b1.mcq !== "-" && parseInt(b1.mcq) < 10) || 
+                          (b1.total < 33);
             
-            let banglaCombinedFail = (banglaCQ < 46 || banglaMCQ < 20 || banglaTotal < 66);
+            // বাংলা ২য় পত্রের যেকোনো অংশে (CQ: ২৩, MCQ: ১০, মোট: ৩৩) এর কম পেলে ফেল
+            let b2_Fail = (b2.cq !== "-" && parseInt(b2.cq) < 23) || 
+                          (b2.mcq !== "-" && parseInt(b2.mcq) < 10) || 
+                          (b2.total < 33);
+
+            let banglaCombinedFail = (b1_Fail || b2_Fail);
             let banglaResult = banglaCombinedFail ? { grade: "F", point: 0.0 } : getGradeAndPoint(banglaTotal / 2, "বাংলা");
-            
+
             mainSubjectsPoints += banglaResult.point;
             if (banglaCombinedFail) isFailed = true;
 
-            // ৩. ইংরেজি কম্বাইন্ড পাস-ফেল ও গ্রেড হিসাব (২০০ নম্বরের উপর ভিত্তি করে)
+            // ৩. ইংরেজি পাস-ফেল ও গ্রেড হিসাব (২০০ নম্বরের উপর ভিত্তি করে)
             let englishTotal = e1.total + e2.total;
-            let englishCombinedFail = (englishTotal < 66);
-            let englishResult = englishCombinedFail ? { grade: "F", point: 0.0 } : getGradeAndPoint(englishTotal / 2, "ইংরেজি");
             
+            // ইংরেজি ১ম পত্র বা ২য় পত্রের যেকোনো একটিতে ৩৩ এর কম পেলে ফেল
+            let englishCombinedFail = (e1.total < 33 || e2.total < 33);
+            let englishResult = englishCombinedFail ? { grade: "F", point: 0.0 } : getGradeAndPoint(englishTotal / 2, "ইংরেজি");
+
             mainSubjectsPoints += englishResult.point;
-            if (englishCombinedFail) isFailed = true;
+            if (englishCombinedFail) isFailed = true;;
 
             // 📊 ৪. প্রথমে টেবিলে মার্জড (Merged) অবস্থায় বাংলা ১ম ও ২য় পত্র যোগ করা
             tableHtml += `<tr>
