@@ -371,8 +371,7 @@
             
             // লাইভ QR কোড জেনারেটর এপিআই লিংক যুক্তকরণ
             document.getElementById('qrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=${encodeURIComponent(formattedVerifyId)}`;
-
-                                   let totalMarks = 0;
+            let totalMarks = 0;
             let mainSubjectsPoints = 0;
             let optionalSubjectPoints = 0;
             let isFailed = false;
@@ -394,7 +393,7 @@
                 } else if (sub.name === "বাংলা ২য় পত্র") {
                     b2 = { cq: sub.cq, mcq: sub.mcq, prac: "-", total: sub.total };
                 } else if (sub.name === "ইংরেজি ১ম পত্র") {
-                    e1 = { cq: sub.total, mcq: "-", prac: "-", total: sub.total }; // ইংরেজি সাধারণত শুধু টোটাল/থিউরি থাকে
+                    e1 = { cq: sub.total, mcq: "-", prac: "-", total: sub.total }; // ইংরেজিতে শুধু টোটাল/থিউরি
                 } else if (sub.name === "ইংরেজি ২য় পত্র") {
                     e2 = { cq: sub.total, mcq: "-", prac: "-", total: sub.total };
                 } else {
@@ -402,33 +401,26 @@
                 }
             });
 
-            // 🚨 ২. বাংলা ৪টি অংশের আলাদা পাস-ফেল চেক (CQ ৩৩% = ২৩, MCQ ৩৩% = ১০, মোট ২০০ তে পাস = ৬৬)
+            // ২. বাংলা কম্বাইন্ড পাস-ফেল ও গ্রেড হিসাব (২০০ নম্বরের উপর ভিত্তি করে)
             let banglaTotal = b1.total + b2.total;
-            let b1_CQ_Fail = (b1.cq !== "-" && b1.cq < 23);
-            let b1_MCQ_Fail = (b1.mcq !== "-" && b1.mcq < 10);
-            let b2_CQ_Fail = (b2.cq !== "-" && b2.cq < 23);
-            let b2_MCQ_Fail = (b2.mcq !== "-" && b2.mcq < 10);
+            let banglaCQ = (parseInt(b1.cq)||0) + (parseInt(b2.cq)||0);
+            let banglaMCQ = (parseInt(b1.mcq)||0) + (parseInt(b2.mcq)||0);
             
-            // যেকোনো ১টি পার্ট-এ কম পেলে অথবা মোট ৬৬ এর কম হলে ফেল
-            let banglaCombinedFail = (b1_CQ_Fail || b1_MCQ_Fail || b2_CQ_Fail || b2_MCQ_Fail || banglaTotal < 66);
+            let banglaCombinedFail = (banglaCQ < 46 || banglaMCQ < 20 || banglaTotal < 66);
             let banglaResult = banglaCombinedFail ? { grade: "F", point: 0.0 } : getGradeAndPoint(banglaTotal / 2, "বাংলা");
             
             mainSubjectsPoints += banglaResult.point;
             if (banglaCombinedFail) isFailed = true;
 
-            // 🚨 ৩. ইংরেজি ২টি অংশের আলাদা পাস-ফেল চেক (প্রতি পত্রে পাস ৩৩, মোট ২০০ তে পাস = ৬৬)
+            // ৩. ইংরেজি কম্বাইন্ড পাস-ফেল ও গ্রেড হিসাব (২০০ নম্বরের উপর ভিত্তি করে)
             let englishTotal = e1.total + e2.total;
-            let e1_Fail = (e1.cq !== "-" && e1.cq < 33);
-            let e2_Fail = (e2.cq !== "-" && e2.cq < 33);
-            
-            // যেকোনো ১টি পত্রে ফেল করলে বা মোট ৬৬ এর কম হলে ফেল
-            let englishCombinedFail = (e1_Fail || e2_Fail || englishTotal < 66);
+            let englishCombinedFail = (englishTotal < 66);
             let englishResult = englishCombinedFail ? { grade: "F", point: 0.0 } : getGradeAndPoint(englishTotal / 2, "ইংরেজি");
             
             mainSubjectsPoints += englishResult.point;
             if (englishCombinedFail) isFailed = true;
 
-            // 📊 ৪. টেবিলে মার্জড (Merged) অবস্থায় বাংলা ১ম ও ২য় পত্র যোগ করা
+            // 📊 ৪. প্রথমে টেবিলে মার্জড (Merged) অবস্থায় বাংলা ১ম ও ২য় পত্র যোগ করা
             tableHtml += `<tr>
                 <td style="text-align: left; padding-left: 15px; vertical-align: middle;">বাংলা ১ম পত্র<br>বাংলা ২য় পত্র</td>
                 <td style="vertical-align: middle;">${b1.cq < 10 ? '0'+b1.cq : b1.cq}<br>${b2.cq < 10 ? '0'+b2.cq : b2.cq}</td>
@@ -441,7 +433,7 @@
 
             // 📊 ৫. টেবিলে মার্জড (Merged) অবস্থায় ইংরেজি ১ম ও ২য় পত্র যোগ করা
             tableHtml += `<tr>
-                <td style="text-align: left; padding-left: 15px; vertical-align: middle;">ইংরেজি ১ম পত্র<br>ইংরেজি ২য় পত্র</td>
+                <td style="text-align: left; padding-left: 15px; vertical-align: middle;">ENGLISH-I<br>ENGLISH-II</td>
                 <td style="vertical-align: middle;">${e1.cq < 10 ? '0'+e1.cq : e1.cq}<br>${e2.cq < 10 ? '0'+e2.cq : e2.cq}</td>
                 <td style="vertical-align: middle;">-<br>-</td>
                 <td style="vertical-align: middle;">-<br>-</td>
@@ -455,31 +447,18 @@
                 let result = getGradeAndPoint(sub.total, sub.name);
                 let isPartFailed = false;
 
-                if (sub.name.includes("গণিত") || sub.name.includes("বাংলাদেশ ও বিশ্বপরিচয়") || sub.name.includes("ইসলাম") || sub.name.includes("ধর্ম")) {
+                if (sub.name.includes("গণিত") || sub.name.includes("বিশ্বপরিচয়") || sub.name.includes("শিক্ষা") || sub.name.includes("ধর্ম")) {
                     if (sub.cq < 23 || sub.mcq < 10 || sub.total < 33) isPartFailed = true;
                 } else if (sub.name.includes("পদার্থ") || sub.name.includes("রসায়ন") || sub.name.includes("জীববিজ্ঞান") || sub.isOptional) {
-                    let hasCQ = sub.cq !== undefined && sub.cq !== "-";
-                    let hasMCQ = sub.mcq !== undefined && sub.mcq !== "-";
-                    let hasPrac = sub.prac !== undefined && sub.prac !== "-";
-
-                    if ((hasCQ && sub.cq < 17) || (hasMCQ && sub.mcq < 8) || (hasPrac && sub.prac < 8) || sub.total < 33) {
-                        isPartFailed = true;
-                    }
+                    if (sub.cq < 17 || sub.mcq < 8 || sub.prac < 8 || sub.total < 33) isPartFailed = true;
                 } else if (sub.name.includes("তথ্য ও যোগাযোগ")) {
-                    let hasMCQ = sub.mcq !== undefined && sub.mcq !== "-";
-                    let hasPrac = sub.prac !== undefined && sub.prac !== "-";
-
-                    if ((hasMCQ && sub.mcq < 8) || (hasPrac && sub.prac < 8) || sub.total < 17) {
-                        isPartFailed = true;
-                    }
-                } else {
-                    if (sub.total < 33) isPartFailed = true;
+                    if (sub.mcq < 8 || sub.prac < 8 || sub.total < 17) isPartFailed = true;
                 }
 
                 if (isPartFailed) {
                     result.grade = "F";
                     result.point = 0.0;
-                    isFailed = true; 
+                    isFailed = true;
                 }
 
                 if (sub.isOptional) {
@@ -489,6 +468,7 @@
                 }
 
                 let cqShow = (sub.cq === 0 || sub.name.includes("তথ্য ও যোগাযোগ")) ? "-" : (sub.cq < 10 ? '0'+sub.cq : sub.cq);
+
                 let mcqShow = sub.mcq === 0 ? "-" : (sub.mcq < 10 ? '0'+sub.mcq : sub.mcq);
                 let pracShow = sub.prac === 0 ? "-" : (sub.prac < 10 ? '0'+sub.prac : sub.prac);
                 let optText = sub.isOptional ? " (৪র্থ বিষয়)" : "";
@@ -503,21 +483,15 @@
             });
 
             document.getElementById('marksTableBody').innerHTML = tableHtml;
-            
-            // মোট নম্বর ঠিকই যোগ হবে
             document.getElementById('resTotal').innerText = totalMarks;
 
-            // 🏁 ৭. চূড়ান্ত জিপিএ (GPA) ও মেরিট কার্ড হ্যান্ডেল করা
+            // 🏁 ৭. চূড়ান্ত জিপিএ (GPA) নির্ধারণ ও প্রদর্শন
             if (isFailed) {
                 document.getElementById('resGPA').innerText = "0.00 (F)";
                 document.getElementById('resGPA').style.color = "#c0392b";
                 document.getElementById('resGPA').style.background = "none";
-                
-                if (document.getElementById('resMerit')) {
-                    document.getElementById('resMerit').innerText = "-";
-                }
             } else {
-                let finalGPA = (mainSubjectsPoints + optionalSubjectPoints) / 9; // আবশ্যিক বিষয় ৯টি
+                let finalGPA = (mainSubjectsPoints + optionalSubjectPoints) / 9; // মোট আবশ্যিক ৯টি
                 if (finalGPA > 5) finalGPA = 5.00;
 
                 let finalLetter = "F";
@@ -531,15 +505,8 @@
                 document.getElementById('resGPA').innerText = `${finalGPA.toFixed(2)} (${finalLetter})`;
                 document.getElementById('resGPA').style.color = "#1e5631";
                 document.getElementById('resGPA').style.background = "none";
-                
-                if (document.getElementById('resPosition)) {
-                    document.getElementById('resPosition').innerText = studentData.merit || "N/A";
-                }
             }
-
-
-
-            printArea.style.display = 'block';
+  printArea.style.display = 'block';
             printArea.scrollIntoView({ behavior: 'smooth' });
 
         } catch (error) {
